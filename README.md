@@ -41,6 +41,7 @@ Prérequis :
 - custom cursor : <https://sussextaps.com.au/> 
 - neo-brutalism ThreeJS : <https://repeat.studiofreight.com/>
 - INCREDIBLE ThreeJS example (bague): <https://webgi-jewelry.vercel.app/>
+ - similar website to ours : <https://stage-helias.myshopify.com/>
 
 
 
@@ -49,5 +50,10 @@ Prérequis :
 ---
 ## Site design
 
+ - similar website to ours : <https://stage-helias.myshopify.com/>
+
 ### Ressources
  - <https://www.awwwards.com/inspiration/consistant-3d-images-elementary> --> ![](https://assets.awwwards.com/awards/element/2023/07/64c7977047c70631166571.jpg)
+ - ![](https://assets.awwwards.com/awards/submissions/2019/07/5d2378f31ffb2988004784.png)
+ - ![](https://assets.awwwards.com/awards/external/2020/12/5fcf897cd3999409543069.jpg)
+ - ![](https://assets.awwwards.com/awards/submissions/2018/03/5aa791c5a56ba.jpg)
