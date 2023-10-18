@@ -42,6 +42,7 @@ Prérequis :
 - neo-brutalism ThreeJS : <https://repeat.studiofreight.com/>
 - INCREDIBLE ThreeJS example (bague): <https://webgi-jewelry.vercel.app/>
  - similar website to ours : <https://stage-helias.myshopify.com/>
+ - animations : <https://www.danielroth.com/historical-models/>
 
 
 
