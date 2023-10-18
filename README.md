@@ -22,7 +22,7 @@ Prérequis :
 - preprocesseur CSS ?
 - Bootstrap
 - NodeJS ?-> utilisation de bdd avec, un système d’upload (des fichiers obj à mettre dans threeJS depuis d’interface jsp) etc… ?
-- Figma (design)
+- [Figma (design)](https://www.figma.com/file/IyzCuuXuzRHhmPcgKNFIsf/Untitled?type=design&node-id=0%3A1&mode=design&t=rqxShbZXRcXu3DL3-1)
 
 
 
