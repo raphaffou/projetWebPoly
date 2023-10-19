@@ -17,8 +17,8 @@ Prérequis :
 
 
 ### Technologies :
-- Angular 
--Spline + ThreeJS (+ GSAP ?)
+- [Angular](#angular)   
+- Spline + ThreeJS (+ GSAP ?)
 - preprocesseur CSS ?
 - Bootstrap
 - NodeJS ?-> utilisation de bdd avec, un système d’upload (des fichiers obj à mettre dans threeJS depuis d’interface jsp) etc… ?
@@ -45,6 +45,9 @@ Prérequis :
  - animations : <https://www.danielroth.com/historical-models/>
 
 
+### Angular
+- Intro : <https://angular.io/guide/what-is-angular>
+- Tuto : <https://angular.io/start>
 
 
 
