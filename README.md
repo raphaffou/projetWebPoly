@@ -5,6 +5,9 @@ Prérequis :
 - node 21.0.0
 - npm 10.2.0
 
+**Design :**
+<https://www.figma.com/file/IyzCuuXuzRHhmPcgKNFIsf/Projet-Web-APP3?type=design&node-id=0%3A1&mode=design&t=xyl50WpWNm5dfTto-1>
+
 
 ### Sujet du site :
 - jeux (UE Initiative)
