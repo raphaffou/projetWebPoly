@@ -67,3 +67,16 @@ Prérequis :
  - ![](https://assets.awwwards.com/awards/submissions/2019/07/5d2378f31ffb2988004784.png)
  - ![](https://assets.awwwards.com/awards/external/2020/12/5fcf897cd3999409543069.jpg)
  - ![](https://assets.awwwards.com/awards/submissions/2018/03/5aa791c5a56ba.jpg)
+
+
+### Make ThreeJS Work
+https://newscrewdriver.com/2023/04/06/angular-three-js-hello-world/
+https://github.com/AxiomeCG/ng-three-starter-kit
+
+https://stackblitz.com/edit/angular-threejs-demo-basic?file=src%2Fapp%2Fapp.component.ts
+
+https://angular.io/guide/versions
+
+
+### GSAP
+Accesibility : https://youtu.be/9gipsKpWozE?si=nV82tWHzM-EMTXbG
