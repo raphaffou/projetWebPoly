@@ -1,10 +1,14 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { HeroAnimComponent } from './hero-anim/hero-anim.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app',
+  standalone: true,
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  imports: [CommonModule, RouterOutlet, HeroAnimComponent]
 })
 export class AppComponent {
-  title = 'projet';
+  title = 'three';
 }
