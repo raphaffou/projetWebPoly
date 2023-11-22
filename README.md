@@ -5,6 +5,15 @@ Prérequis :
 - node 21.0.0
 - npm 10.2.0
 
+## Setup
+npm version : 10.1.0  
+
+npm install -g @angular/cli  
+npm install gsap  
+npm install three  
+npm i --save-dev @types/three  
+
+
 **Design :**
 <https://www.figma.com/file/IyzCuuXuzRHhmPcgKNFIsf/Projet-Web-APP3?type=design&node-id=0%3A1&mode=design&t=xyl50WpWNm5dfTto-1>
 
@@ -44,8 +53,8 @@ Prérequis :
 - custom cursor : <https://sussextaps.com.au/> 
 - neo-brutalism ThreeJS : <https://repeat.studiofreight.com/>
 - INCREDIBLE ThreeJS example (bague): <https://webgi-jewelry.vercel.app/>
- - similar website to ours : <https://stage-helias.myshopify.com/>
- - animations : <https://www.danielroth.com/historical-models/>
+- similar website to ours : <https://stage-helias.myshopify.com/>
+- animations : <https://www.danielroth.com/historical-models/>
 
 
 ### Angular
@@ -59,14 +68,13 @@ Prérequis :
 
 ---
 ## Site design
-
- - similar website to ours : <https://stage-helias.myshopify.com/>
+- similar website to ours : <https://stage-helias.myshopify.com/>
 
 ### Ressources
- - <https://www.awwwards.com/inspiration/consistant-3d-images-elementary> --> ![](https://assets.awwwards.com/awards/element/2023/07/64c7977047c70631166571.jpg)
- - ![](https://assets.awwwards.com/awards/submissions/2019/07/5d2378f31ffb2988004784.png)
- - ![](https://assets.awwwards.com/awards/external/2020/12/5fcf897cd3999409543069.jpg)
- - ![](https://assets.awwwards.com/awards/submissions/2018/03/5aa791c5a56ba.jpg)
+- <https://www.awwwards.com/inspiration/consistant-3d-images-elementary> --> ![](https://assets.awwwards.com/awards/element/2023/07/64c7977047c70631166571.jpg)
+- ![](https://assets.awwwards.com/awards/submissions/2019/07/5d2378f31ffb2988004784.png)
+- ![](https://assets.awwwards.com/awards/external/2020/12/5fcf897cd3999409543069.jpg)
+- ![](https://assets.awwwards.com/awards/submissions/2018/03/5aa791c5a56ba.jpg)
 
 
 ### Make ThreeJS Work
@@ -80,3 +88,4 @@ https://angular.io/guide/versions
 
 ### GSAP
 Accesibility : https://youtu.be/9gipsKpWozE?si=nV82tWHzM-EMTXbG
+
