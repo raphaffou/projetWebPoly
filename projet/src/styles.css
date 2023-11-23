@@ -1,3 +1,7 @@
+body{
+    background: radial-gradient(202.3% 136.27% at 83.78% 10.5%, #E1FBFF 74.61%, rgba(225, 251, 255, 0.65) 100%);
+}
+
 #header {
     display: flex;
     justify-content: space-between;

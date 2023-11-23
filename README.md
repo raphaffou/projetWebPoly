@@ -89,3 +89,11 @@ https://angular.io/guide/versions
 ### GSAP
 Accesibility : https://youtu.be/9gipsKpWozE?si=nV82tWHzM-EMTXbG
 
+
+
+
+
+
+https://stackblitz.com/run?file=src%2Fapp%2Fapp.module.ts,src%2Fmain.ts,src%2Fapp%2Fapp-routing.module.ts,src%2Fapp%2Fapp.component.ts  
+https://angular.io/guide/bootstrapping  
+https://angular.io/tutorial/tour-of-heroes/toh-pt5  
