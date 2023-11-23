@@ -12,6 +12,8 @@ npm install -g @angular/cli
 npm install gsap  
 npm install three  
 npm i --save-dev @types/three  
+npm install three-stdlib  
+npm i @spline/loader  
 
 
 **Design :**
@@ -89,11 +91,23 @@ https://angular.io/guide/versions
 ### GSAP
 Accesibility : https://youtu.be/9gipsKpWozE?si=nV82tWHzM-EMTXbG
 
+### 3D Modeling
+Luma AI's Genie  
+Spline 3D  
+https://www.turbosquid.com/Search/3D-Models/free/cosmetic-tube  
 
+### 3D Model
 
+https://app.spline.design/file/f0780ea8-c5c2-467d-84dd-f10bcae43c85 (pot)  
+https://app.spline.design/library/bb106a46-9df9-4486-9f6e-3d37b0d12d75 (long tube)  
 
+https://www.turbosquid.com/3d-models/toy-cosmetic-bottles-3d-1944937  
+https://www.turbosquid.com/3d-models/3d-cosmetics-bathroom-gold-model-1475772  
+https://www.turbosquid.com/3d-models/3d-stylized-bathroom-items-freebie-free-free-lowpoly-3d-model-model-2006529    
+https://www.turbosquid.com/3d-models/3d-laserautomaticpipecuttingmachine3ds-1738279   
+https://www.turbosquid.com/fr/3d-models/cosmetic-tube-3d-model-1414639  (not free)  
 
-
+#### Angular Routing
 https://stackblitz.com/run?file=src%2Fapp%2Fapp.module.ts,src%2Fmain.ts,src%2Fapp%2Fapp-routing.module.ts,src%2Fapp%2Fapp.component.ts  
 https://angular.io/guide/bootstrapping  
 https://angular.io/tutorial/tour-of-heroes/toh-pt5  
