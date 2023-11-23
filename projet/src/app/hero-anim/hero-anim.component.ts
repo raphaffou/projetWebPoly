@@ -11,7 +11,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
   standalone : true,
   imports : [CommonModule],
   templateUrl: './hero-anim.component.html',
-  styleUrl: './hero-anim.component.css'
+  styleUrl: './hero-anim.component.scss'
 })
 export class HeroAnimComponent implements OnInit{
   ngOnInit() {

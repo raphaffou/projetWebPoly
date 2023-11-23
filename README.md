@@ -111,3 +111,7 @@ https://www.turbosquid.com/fr/3d-models/cosmetic-tube-3d-model-1414639  (not fre
 https://stackblitz.com/run?file=src%2Fapp%2Fapp.module.ts,src%2Fmain.ts,src%2Fapp%2Fapp-routing.module.ts,src%2Fapp%2Fapp.component.ts  
 https://angular.io/guide/bootstrapping  
 https://angular.io/tutorial/tour-of-heroes/toh-pt5  
+
+
+## Questions
+- SSR ?

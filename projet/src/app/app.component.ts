@@ -7,7 +7,7 @@ import { HeroAnimComponent } from './hero-anim/hero-anim.component';
   selector: 'app',
   standalone: true,
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.scss'],
   imports: [CommonModule, RouterOutlet, HeroAnimComponent]
 })
 export class AppComponent {
