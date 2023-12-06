@@ -20,29 +20,29 @@ export class HeroAnimComponent implements OnInit{
     var color = new THREE.Color(0x000000);
     var container = document.querySelector('#container')!;
 
-    // const partCnt = 1000;
-    // const posArray = new Float32Array(partCnt * 3);
-    // for (let i = 0; i < partCnt * 3; i++) {
-    //   posArray[i] = Math.random() * 5 * (Math.random() - 0.5);
-    // }
-    // const partGeo = new THREE.BufferGeometry();
-    // partGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const partCnt = 1000;
+    const posArray = new Float32Array(partCnt * 3);
+    for (let i = 0; i < partCnt * 3; i++) {
+      posArray[i] = Math.random() * 5 * (Math.random() - 0.5);
+    }
+    const partGeo = new THREE.BufferGeometry();
+    partGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 
-    // const geometry = new THREE.SphereGeometry(0.5, 64, 64);
-    // const material = new THREE.PointsMaterial({ 
-    //   color : color, 
-    //   size: 0.005 
-    // });
-    // const particulematerial = new THREE.PointsMaterial({
-    //   color : color,
-    //   size: 0.005,
-    //   blending: THREE.AdditiveBlending,
-    //   transparent: true,
-    //   sizeAttenuation: true,
-    // });
-    // const sphere = new THREE.Points(geometry, material);
-    // const partMesh = new THREE.Points(partGeo, particulematerial);
-    // scene.add(sphere, partMesh);
+    const geometry = new THREE.SphereGeometry(0.5, 64, 64);
+    const material = new THREE.PointsMaterial({ 
+      color : color, 
+      size: 0.005 
+    });
+    const particulematerial = new THREE.PointsMaterial({
+      color : color,
+      size: 0.005,
+      blending: THREE.AdditiveBlending,
+      transparent: true,
+      sizeAttenuation: true,
+    });
+    const sphere = new THREE.Points(geometry, material);
+    const partMesh = new THREE.Points(partGeo, particulematerial);
+    scene.add(sphere, partMesh);
 
 
     const sizes = {
@@ -115,29 +115,29 @@ export class HeroAnimComponent implements OnInit{
       }
     }
 
+/*     renderer.setClearAlpha(1);
+    const loader = new SplineLoader();
+    loader.load(
+      'https://prod.spline.design/vxvf69Ij5w2ze9OD/scene.splinecode',
+      (splineScene) => {
+        scene.add(splineScene);
+      }
+    );
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.125; */
 
-    // const loader = new SplineLoader();
-    // loader.load(
-    //   'https://prod.spline.design/vxvf69Ij5w2ze9OD/scene.splinecode',
-    //   (splineScene) => {
-    //     scene.add(splineScene);
-    //   }
-    // );
-    // const controls = new OrbitControls(camera, renderer.domElement);
-    // controls.enableDamping = true;
-    // controls.dampingFactor = 0.125;
+    // const loader = new GLTFLoader();
 
-    const loader = new GLTFLoader();
-
-    loader.load( '../assets/short_hand_cream_copy.glb', function ( gltf:any ) {
+    // loader.load( '../assets/short_hand_cream_copy.glb', function ( gltf:any ) {
     
-      scene.add( gltf.scene );
+    //   scene.add( gltf.scene );
     
-    }, undefined, function ( error:any ) {
+    // }, undefined, function ( error:any ) {
     
-      console.error( error );
+    //   console.error( error );
     
-    } );
+    // } );
 
 
 
@@ -149,16 +149,16 @@ export class HeroAnimComponent implements OnInit{
 
       const elapsedTime = clock.getElapsedTime();
 
-      // sphere.rotation.y = 0.5 * elapsedTime;
-      // partMesh.rotation.y += 0.05 * (targetX - partMesh.rotation.y);
-      // if (zoom) {
-      //   gsap.timeline({ defaults: { duration: 1.5, ease: "expo.out"}})
-      //       .to(sphere.position, { x:0, y:0, z:5 },0)
-      //       .to(sphere.position, { x:0, y:0, z:0 },0);
-      // }
-      // if (!zoom) {
-      //   gsap.to(sphere.position, {duration: 1, x: 0, y: 0, z: 0});
-      // }
+      sphere.rotation.y = 0.5 * elapsedTime;
+      partMesh.rotation.y += 0.05 * (targetX - partMesh.rotation.y);
+      if (zoom) {
+        gsap.timeline({ defaults: { duration: 1.5, ease: "expo.out"}})
+            .to(sphere.position, { x:0, y:0, z:5 },0)
+            .to(sphere.position, { x:0, y:0, z:0 },0);
+      }
+      if (!zoom) {
+        gsap.to(sphere.position, {duration: 1, x: 0, y: 0, z: 0});
+      }
 
       renderer.render(scene, camera);
       window.requestAnimationFrame(tick);
@@ -166,7 +166,3 @@ export class HeroAnimComponent implements OnInit{
     tick();
   }
 }
-
-
-
-
