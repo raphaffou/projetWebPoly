@@ -5,15 +5,16 @@ import { gsap } from "gsap";
 import SplineLoader from '@splinetool/loader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
-  selector: 'hero-anim',
+  selector: 'hero',
   standalone : true,
-  imports : [CommonModule],
+  imports : [CommonModule, HeaderComponent],
   templateUrl: './hero-anim.component.html',
   styleUrl: './hero-anim.component.scss'
 })
-export class HeroAnimComponent implements OnInit{
+export class HeroComponent implements OnInit{
   ngOnInit() {
     const scene = new THREE.Scene();
     const clock = new THREE.Clock();

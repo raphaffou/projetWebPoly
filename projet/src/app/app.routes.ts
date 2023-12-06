@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
-import { HeroAnimComponent } from './hero-anim/hero-anim.component';
 import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HeroComponent } from './hero-anim/hero-anim.component';
 
 export const routes: Routes = [
-    { path: 'home', component: AppComponent },
-    { path: 'hero-anim', component: HeroAnimComponent },
+    { path: 'home', component: HeroComponent},
+    { path: '',   redirectTo: '/home', pathMatch: 'full' }, // redirect to `first-component`
+    { path: '**', title:'404', component: PageNotFoundComponent }, // Wildcard route for a 404 page
 ];

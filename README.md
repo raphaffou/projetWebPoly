@@ -113,5 +113,10 @@ https://angular.io/guide/bootstrapping
 https://angular.io/tutorial/tour-of-heroes/toh-pt5  
 
 
+https://stackoverflow.com/questions/51909800/how-to-navigate-to-other-page-in-angular-6 
+
+https://stackblitz.com/run?file=src%2Fapp%2Fapp.component.html,src%2Fapp%2Fapp-routing.module.ts,src%2Fapp%2Fapp-routing.module.11.ts
+
+
 ## Questions
 - SSR ?
