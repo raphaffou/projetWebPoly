@@ -23,11 +23,10 @@ export class ShopProductsComponent {
     let image_width:any = gsap.getProperty("#caroussel", "width", "px");
 
     gsap.to("#caroussel", {
-      xPercent: -100 * (products.length - 1),
+      xPercent: -120,
       x: image_width*(products.length-1)/products.length,
       ease: "none",
       scrollTrigger: {
-        markers : true,
         trigger: "#caroussel",
         start: () => `top-=${gsap.getProperty("#header", 'height')} top`,
         end: () => image_width*(products.length-1)/products.length,
@@ -54,7 +53,8 @@ export class ShopProductsComponent {
         },
         onLeaveBack: () => {
           gsap.to(section, {y: 30, opacity: 0});
-        }
+        },
+        invalidateOnRefresh: true
       })});
 
   }
