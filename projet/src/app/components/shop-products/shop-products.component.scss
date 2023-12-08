@@ -1,0 +1,29 @@
+#caroussel{
+    display: flex;
+    flex-wrap: nowrap;
+    height: 800px;
+    width: calc(3*800px);
+    overscroll-behavior: none;
+
+    .product{
+
+    }
+
+    img{
+        height: 800px;
+        width: 800px;
+        object-fit: cover;
+    }
+
+}
+.text{
+    text-align: center;
+    padding-inline: 3em;
+    width: 100vw;
+    height: 800px;
+    text-transform: uppercase;
+
+    transition: transform 500ms cubic-bezier(0,0,0.5,1),opacity 500ms cubic-bezier(0,0,0.5,1);
+}
+
+
