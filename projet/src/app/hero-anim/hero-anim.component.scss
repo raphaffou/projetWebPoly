@@ -1,0 +1,35 @@
+* {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    text-size-adjust: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+  
+  .hero-text {
+    font-size: 8rem;
+    text-transform: uppercase;
+    color: black;
+    z-index: 10;
+  }
+  
+  #container {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  
+  #hero-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    outline: none;
+    cursor: crosshair;
+  }
