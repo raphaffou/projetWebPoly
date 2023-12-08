@@ -1,8 +1,21 @@
 #header{
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    
     font-weight: 600;
     font-size: large;
     text-transform: uppercase;
     font-variant: small-caps;
+
+    .left-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 
 #cart-img{

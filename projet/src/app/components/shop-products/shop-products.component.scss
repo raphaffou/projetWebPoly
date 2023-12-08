@@ -1,26 +1,30 @@
+$image-width : 450px;
+
 #caroussel{
     display: flex;
     flex-wrap: nowrap;
-    height: 800px;
-    width: calc(3*800px);
+    height: 100%;
+    width: calc(4*$image-width);
     overscroll-behavior: none;
+    padding-top: 12vh;
+    cursor: crosshair;
 
     .product{
+        margin-inline: 15px;
 
+        img{
+            height: 520px;
+            width: $image-width;
+            object-fit : cover; //contain; is good
+            border-radius: 32px;
+        }
     }
-
-    img{
-        height: 800px;
-        width: 800px;
-        object-fit: cover;
-    }
-
 }
 .text{
     text-align: center;
     padding-inline: 3em;
     width: 100vw;
-    height: 800px;
+    margin-block: 400px;
     text-transform: uppercase;
 
     transition: transform 500ms cubic-bezier(0,0,0.5,1),opacity 500ms cubic-bezier(0,0,0.5,1);

@@ -19,19 +19,21 @@ export class ShopProductsComponent {
   ngOnInit() {
     gsap.registerPlugin(ScrollTrigger);
 
-    let products = gsap.utils.toArray(".product");
+    let products:any[] = gsap.utils.toArray(".product");
+    let image_width:any = gsap.getProperty("#caroussel", "width", "px");
 
     gsap.to("#caroussel", {
       xPercent: -100 * (products.length - 1),
-      x: () => innerWidth,
+      x: image_width*(products.length-1)/products.length,
       ease: "none",
       scrollTrigger: {
+        markers : true,
         trigger: "#caroussel",
-        start: "top top",
-        end: () => innerWidth * 3,
+        start: () => `top-=${gsap.getProperty("#header", 'height')} top`,
+        end: () => image_width*(products.length-1)/products.length,
         scrub: 1,
         pin: true,
-        snap: 1 / (products.length - 1),
+        snap: image_width / (products.length - 1),
         invalidateOnRefresh: true,
         anticipatePin: 1
       }
@@ -39,15 +41,13 @@ export class ShopProductsComponent {
 
 
     const text_sections = gsap.utils.toArray('.text');
-    console.warn(text_sections);
 
     text_sections.forEach((section:any) => {
       gsap.set(section, { y: 30, opacity: 0});
 
       ScrollTrigger.create({
         trigger: section,
-        markers : true,
-        start: () => `top-=${gsap.getProperty(section, 'y')} bottom-=100`,
+        start: () => `top+=${gsap.getProperty(section, 'y')}/4 bottom-=100`, //${gsap.getProperty(section, 'y')}/4
         end: () => `+=${section.clientHeight}`,
         onEnter: () => {
           gsap.to(section, {y: 0, opacity: 1});
@@ -59,15 +59,3 @@ export class ShopProductsComponent {
 
   }
 }
-
-/*
-xPercent: -100 * (sections.length - 1),
-  ease: "none",
-  scrollTrigger: {
-    trigger: ".container",
-    pin: true,
-    scrub: 1,
-    snap: 1 / (sections.length - 1),
-    // base vertical scrolling on how wide the container is so it feels more natural.
-    end: "+=3500",
-  */
