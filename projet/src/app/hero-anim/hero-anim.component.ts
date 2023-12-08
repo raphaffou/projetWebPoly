@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import SplineLoader from '@splinetool/loader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { HeaderComponent } from '../header/header.component';
+import { HeaderComponent } from '../components/header/header.component';
 
 @Component({
   selector: 'hero',
