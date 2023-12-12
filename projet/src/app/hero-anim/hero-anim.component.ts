@@ -21,6 +21,7 @@ export class HeroComponent implements OnInit{
     var color = new THREE.Color(0x000000);
     var container = document.querySelector('#container')!;
 
+    /*
     const partCnt = 1000;
     const posArray = new Float32Array(partCnt * 3);
     for (let i = 0; i < partCnt * 3; i++) {
@@ -44,7 +45,7 @@ export class HeroComponent implements OnInit{
     const sphere = new THREE.Points(geometry, material);
     const partMesh = new THREE.Points(partGeo, particulematerial);
     scene.add(sphere, partMesh);
-
+    */
 
     const sizes = {
       width: window.innerWidth,
@@ -116,29 +117,36 @@ export class HeroComponent implements OnInit{
       }
     }
 
-/*     renderer.setClearAlpha(1);
+/*
     const loader = new SplineLoader();
     loader.load(
       'https://prod.spline.design/vxvf69Ij5w2ze9OD/scene.splinecode',
       (splineScene) => {
         scene.add(splineScene);
       }
-    );
+    ); */
+
+    renderer.setClearAlpha(1);
+
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
-    controls.dampingFactor = 0.125; */
+    controls.dampingFactor = 0.125;
 
-    // const loader = new GLTFLoader();
+    const loader = new GLTFLoader();
 
-    // loader.load( '../assets/short_hand_cream_copy.glb', function ( gltf:any ) {
+     loader.load( '../assets/creme.glb', 
+      function ( gltf:any ) {
+        scene.add( gltf.scene );
+      }, 
+      function ( xhr ) {
+
+        console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
     
-    //   scene.add( gltf.scene );
-    
-    // }, undefined, function ( error:any ) {
-    
-    //   console.error( error );
-    
-    // } );
+      }, 
+      function ( error:any ) {
+       console.error( error );
+      } 
+    );
 
 
 
@@ -150,6 +158,7 @@ export class HeroComponent implements OnInit{
 
       const elapsedTime = clock.getElapsedTime();
 
+      /*
       sphere.rotation.y = 0.5 * elapsedTime;
       partMesh.rotation.y += 0.05 * (targetX - partMesh.rotation.y);
       if (zoom) {
@@ -160,6 +169,7 @@ export class HeroComponent implements OnInit{
       if (!zoom) {
         gsap.to(sphere.position, {duration: 1, x: 0, y: 0, z: 0});
       }
+      */
 
       renderer.render(scene, camera);
       window.requestAnimationFrame(tick);
