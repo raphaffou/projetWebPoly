@@ -112,7 +112,7 @@ export class HeroComponent implements OnInit{
     // --------------------- OBJECTS ---------------------
     //const loader = new GLTFLoader();//uncompressedglb
     const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath('/path/to/draco/');
+    dracoLoader.setDecoderPath('../assets/draco/');
 
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
