@@ -4,7 +4,9 @@ import * as THREE from 'three'; // base version : 0.106.2  | v0.110.0 works
 import { gsap } from "gsap";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import { HeaderComponent } from '../components/header/header.component';
+
 
 @Component({
   selector: 'hero',
@@ -100,23 +102,31 @@ export class HeroComponent implements OnInit{
       }
     }
 
+    /*
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.125;
-
+    */
 
 
     // --------------------- OBJECTS ---------------------
-    const loader = new GLTFLoader();
+    //const loader = new GLTFLoader();//uncompressedglb
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('/path/to/draco/');
 
-     loader.load('../assets/creme.glb', 
+    const loader = new GLTFLoader();
+    loader.setDRACOLoader(dracoLoader);
+
+
+     loader.load('../assets/creme_compressed.glb', 
       function (gltf:any) {
+        gltf.scene.rotation.x = 1.2*Math.PI/2;
+        gltf.scene.rotation.y = Math.PI/4;
+        gltf.scene.rotation.z = Math.PI/4;
         scene.add(gltf.scene);
       }, 
       function (xhr) {
-
-        console.log((xhr.loaded/xhr.total * 100) + '% loaded');
-    
+        console.log((xhr.loaded/xhr.total * 100) + '% loaded'); 
       }, 
       function (error:any) {
        console.error(error);
@@ -144,7 +154,8 @@ export class HeroComponent implements OnInit{
         gsap.to(sphere.position, {duration: 1, x: 0, y: 0, z: 0});
       }
       */
-      controls.update();
+
+      //controls.update();
       renderer.render(scene, camera);
       window.requestAnimationFrame(animate);
     };

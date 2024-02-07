@@ -98,6 +98,8 @@ https://www.turbosquid.com/Search/3D-Models/free/cosmetic-tube
 
 ### 3D Model
 
+https://optimizeglb.com/  
+
 https://app.spline.design/file/f0780ea8-c5c2-467d-84dd-f10bcae43c85 (pot)  
 https://app.spline.design/library/bb106a46-9df9-4486-9f6e-3d37b0d12d75 (long tube)  
 
