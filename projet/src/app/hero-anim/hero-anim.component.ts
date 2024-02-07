@@ -110,7 +110,7 @@ export class HeroComponent implements OnInit{
 
 
     // --------------------- OBJECTS ---------------------
-    //const loader = new GLTFLoader();//uncompressedglb
+    //const loader = new GLTFLoader();  // uncompressed glb
     const dracoLoader = new DRACOLoader();
     dracoLoader.setDecoderPath('../assets/draco/');
 
@@ -133,6 +133,48 @@ export class HeroComponent implements OnInit{
       } 
     );
 
+    /*
+import * as dat from 'dat.gui';
+
+// ...
+
+let params = {
+  rotationX: 1.2 * Math.PI / 2,
+  rotationY: Math.PI / 4,
+  rotationZ: Math.PI / 4,
+};
+
+let gui = new dat.GUI();
+
+gui.add(params, 'rotationX', 0, Math.PI * 2).onChange(updateModelRotation);
+gui.add(params, 'rotationY', 0, Math.PI * 2).onChange(updateModelRotation);
+gui.add(params, 'rotationZ', 0, Math.PI * 2).onChange(updateModelRotation);
+
+let model;
+
+loader.load('../assets/creme_compressed.glb', 
+  function (gltf:any) {
+    model = gltf.scene;
+    scene.add(model);
+    updateModelRotation();
+  }, 
+  function (xhr) {
+    console.log((xhr.loaded/xhr.total * 100) + '% loaded'); 
+  }, 
+  function (error:any) {
+   console.error(error);
+  } 
+);
+
+function updateModelRotation() {
+  if (model) {
+    model.rotation.x = params.rotationX;
+    model.rotation.y = params.rotationY;
+    model.rotation.z = params.rotationZ;
+  }
+}
+
+    */
 
 
     // --------------------- ANIMATION ---------------------
