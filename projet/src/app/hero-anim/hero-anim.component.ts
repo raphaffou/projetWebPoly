@@ -6,7 +6,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import { HeaderComponent } from '../components/header/header.component';
-
+import * as dat from 'dat.gui';
+import Stats from 'three/examples/jsm/libs/stats.module';
 
 @Component({
   selector: 'hero',
@@ -20,9 +21,13 @@ export class HeroComponent implements OnInit{
     const scene = new THREE.Scene();
     var container = document.querySelector('#container')!;
     const sizes = {
-      width: window.innerWidth,
-      height: window.innerHeight,
+      width: container.clientWidth,
+      height: container.clientHeight
     };
+
+    const axesHelper = new THREE.AxesHelper(5);
+    const stats = new Stats();
+    document.body.appendChild(stats.dom);
 
 
     //--------------------- LIGHTS ---------------------
@@ -116,13 +121,16 @@ export class HeroComponent implements OnInit{
 
     const loader = new GLTFLoader();
     loader.setDRACOLoader(dracoLoader);
-
-
-     loader.load('../assets/creme_compressed.glb', 
+    let model : any;
+    
+    loader.load('../assets/cosmetics__skin_care_product_-_free.glb', 
       function (gltf:any) {
-        gltf.scene.rotation.x = 1.2*Math.PI/2;
-        gltf.scene.rotation.y = Math.PI/4;
-        gltf.scene.rotation.z = Math.PI/4;
+        model = gltf.scene;
+        animate();
+        gltf.scene.rotation.y = Math.PI/2;
+        gltf.scene.scale.set(10,10,10);
+        gltf.scene.position.set(0,-.15,0);
+        //gltf.scene.add(axesHelper);
         scene.add(gltf.scene);
       }, 
       function (xhr) {
@@ -133,49 +141,6 @@ export class HeroComponent implements OnInit{
       } 
     );
 
-    /*
-import * as dat from 'dat.gui';
-
-// ...
-
-let params = {
-  rotationX: 1.2 * Math.PI / 2,
-  rotationY: Math.PI / 4,
-  rotationZ: Math.PI / 4,
-};
-
-let gui = new dat.GUI();
-
-gui.add(params, 'rotationX', 0, Math.PI * 2).onChange(updateModelRotation);
-gui.add(params, 'rotationY', 0, Math.PI * 2).onChange(updateModelRotation);
-gui.add(params, 'rotationZ', 0, Math.PI * 2).onChange(updateModelRotation);
-
-let model;
-
-loader.load('../assets/creme_compressed.glb', 
-  function (gltf:any) {
-    model = gltf.scene;
-    scene.add(model);
-    updateModelRotation();
-  }, 
-  function (xhr) {
-    console.log((xhr.loaded/xhr.total * 100) + '% loaded'); 
-  }, 
-  function (error:any) {
-   console.error(error);
-  } 
-);
-
-function updateModelRotation() {
-  if (model) {
-    model.rotation.x = params.rotationX;
-    model.rotation.y = params.rotationY;
-    model.rotation.z = params.rotationZ;
-  }
-}
-
-    */
-
 
     // --------------------- ANIMATION ---------------------
     function animate() {
@@ -183,23 +148,22 @@ function updateModelRotation() {
       targetY = mouseY * 0.001;
 
       resizeCanvasToDisplaySize();
-
-      /*
-      sphere.rotation.y = 0.5 * elapsedTime;
-      partMesh.rotation.y += 0.05 * (targetX - partMesh.rotation.y);
+      
       if (zoom) {
         gsap.timeline({ defaults: { duration: 1.5, ease: "expo.out"}})
-            .to(sphere.position, { x:0, y:0, z:5 },0)
-            .to(sphere.position, { x:0, y:0, z:0 },0);
+          .to(model.rotation, {duration: .75, x: -Math.PI/16, y: Math.PI/2 - Math.PI/24, z: 0})
+          .to(model.scale, {duration: .75, x: 20, y: 20, z: 20});
       }
       if (!zoom) {
-        gsap.to(sphere.position, {duration: 1, x: 0, y: 0, z: 0});
+        gsap.timeline({ defaults: { duration: 1.5, ease: "expo.out"}})
+          .to(model.rotation, {duration: .75, x: 0, y: Math.PI/2, z: 0})
+          .to(model.scale, {duration: .75, x: 10, y: 10, z: 10});
       }
-      */
 
       //controls.update();
       renderer.render(scene, camera);
       window.requestAnimationFrame(animate);
+      stats.update();
     };
     animate();
   }
