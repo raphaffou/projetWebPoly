@@ -11,12 +11,12 @@ import Stats from 'three/examples/jsm/libs/stats.module';
 
 @Component({
   selector: 'hero',
-  standalone : true,
-  imports : [CommonModule, HeaderComponent],
+  standalone: true,
+  imports: [CommonModule, HeaderComponent],
   templateUrl: './hero-anim.component.html',
   styleUrl: './hero-anim.component.scss'
 })
-export class HeroComponent implements OnInit{
+export class HeroComponent implements OnInit {
   ngOnInit() {
     const scene = new THREE.Scene();
     var container = document.querySelector('#container')!;
@@ -31,11 +31,12 @@ export class HeroComponent implements OnInit{
 
 
     //--------------------- LIGHTS ---------------------
-    const ambientLight = new THREE.AmbientLight(0x404040,100);
+    const ambientLight = new THREE.AmbientLight(0x404040, 70);
     scene.add(ambientLight);
 
-    //const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
-    //scene.add(directionalLight);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
+    directionalLight.position.set(-1, 0.2, .4);
+    scene.add(directionalLight);
 
 
     // --------------------- RENDERER ---------------------
@@ -67,23 +68,54 @@ export class HeroComponent implements OnInit{
     scene.add(camera);
 
 
-    // --------------------- RESIZE ---------------------
-    let mouseX = 0;
-    let mouseY = 0;
-    let targetX = 0;
-    let targetY = 0;
-    var halfX = window.innerWidth / 2;
-    var halfY = window.innerHeight / 2;
+    // --------------------- OBJECTS ---------------------
+    //const loader = new GLTFLoader();  // uncompressed glb
+    const dracoLoader = new DRACOLoader();
+    dracoLoader.setDecoderPath('../assets/draco/');
 
-    container.addEventListener('mousemove', (e:any) => {mouseX = e.clientX - halfX; mouseY = e.clientY - halfY;});
-    
+    const loader = new GLTFLoader();
+    loader.setDRACOLoader(dracoLoader);
+    let model: any;
+
+    loader.load('../assets/cosmetics__skin_care_product_-_free.glb',
+      function (gltf: any) {
+        model = gltf.scene;
+        animate();
+        gltf.scene.rotation.y = Math.PI / 2;
+        gltf.scene.scale.set(10, 10, 10);
+        gltf.scene.position.set(0, -.15, 0);
+        //gltf.scene.add(axesHelper);
+        scene.add(gltf.scene);
+      },
+      function (xhr) {
+        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+      },
+      function (error: any) {
+        console.error(error);
+      }
+    );
+
+
+    // --------------------- RESIZE AND INTERACT ---------------------
+    const mouse = new THREE.Vector2(0, 0);
+    const target = new THREE.Vector2(0, 0);
+    const halfX = window.innerWidth / 2;
+    const halfY = window.innerHeight / 2;
     var zoom = false;
-    container.addEventListener('mouseenter', () => { 
+
+    container.addEventListener('mousemove', (e: any) => {
+      mouse.x = e.clientX - halfX;
+      mouse.y = e.clientY - halfY;
+    });
+
+    /*
+    container.addEventListener('mouseenter', () => {
       zoom = true;
     });
     container.addEventListener('mouseleave', () => {
       zoom = false;
     });
+    */
 
     window.addEventListener('resize', () => {
       sizes.width = window.innerWidth;
@@ -114,50 +146,29 @@ export class HeroComponent implements OnInit{
     */
 
 
-    // --------------------- OBJECTS ---------------------
-    //const loader = new GLTFLoader();  // uncompressed glb
-    const dracoLoader = new DRACOLoader();
-    dracoLoader.setDecoderPath('../assets/draco/');
-
-    const loader = new GLTFLoader();
-    loader.setDRACOLoader(dracoLoader);
-    let model : any;
-    
-    loader.load('../assets/cosmetics__skin_care_product_-_free.glb', 
-      function (gltf:any) {
-        model = gltf.scene;
-        animate();
-        gltf.scene.rotation.y = Math.PI/2;
-        gltf.scene.scale.set(10,10,10);
-        gltf.scene.position.set(0,-.15,0);
-        //gltf.scene.add(axesHelper);
-        scene.add(gltf.scene);
-      }, 
-      function (xhr) {
-        console.log((xhr.loaded/xhr.total * 100) + '% loaded'); 
-      }, 
-      function (error:any) {
-       console.error(error);
-      } 
-    );
-
-
     // --------------------- ANIMATION ---------------------
+    const raycaster = new THREE.Raycaster();
+
     function animate() {
-      targetX = mouseX * 0.001;
-      targetY = mouseY * 0.001;
+      target.x = mouse.x * 0.001;
+      target.y = mouse.y * 0.001;
 
       resizeCanvasToDisplaySize();
+
+      raycaster.setFromCamera(mouse, camera);
       
+      const intersects = raycaster.intersectObjects(scene.children);
+      zoom = intersects.length > 0;
+
       if (zoom) {
-        gsap.timeline({ defaults: { duration: 1.5, ease: "expo.out"}})
-          .to(model.rotation, {duration: .75, x: -Math.PI/16, y: Math.PI/2 - Math.PI/24, z: 0})
-          .to(model.scale, {duration: .75, x: 20, y: 20, z: 20});
+        gsap.timeline({ defaults: { duration: 1.5, ease: "expo.out" } })
+          .to(model.rotation, { duration: .75, x: -Math.PI / 16, y: Math.PI / 2 - Math.PI / 24, z: 0 })
+          .to(model.scale, { duration: .75, x: 20, y: 20, z: 20 });
       }
       if (!zoom) {
-        gsap.timeline({ defaults: { duration: 1.5, ease: "expo.out"}})
-          .to(model.rotation, {duration: .75, x: 0, y: Math.PI/2, z: 0})
-          .to(model.scale, {duration: .75, x: 10, y: 10, z: 10});
+        gsap.timeline({ defaults: { duration: 1.5, ease: "expo.out" } })
+          .to(model.rotation, { duration: .75, x: 0, y: Math.PI / 2, z: 0 })
+          .to(model.scale, { duration: .75, x: 10, y: 10, z: 10 });
       }
 
       //controls.update();
