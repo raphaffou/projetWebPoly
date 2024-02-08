@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
 //import ITC BERKELEY old style font
 
+$bcg-color: radial-gradient(202.3% 136.27% at 83.78% 10.5%, #E1FBFF 74.61%, rgba(225, 251, 255, 0.65) 100%);
+
 * {
     margin: 0;
     padding: 0;
@@ -10,7 +12,7 @@
 }
 
 body{
-    background: radial-gradient(202.3% 136.27% at 83.78% 10.5%, #E1FBFF 74.61%, rgba(225, 251, 255, 0.65) 100%);
+    background: $bcg-color;
     //background-color: #87CEEB;
 }
 

@@ -16,6 +16,14 @@ npm install three-stdlib
 npm i @spline/loader  
 
 
+
+Front TODO :
+- [ ] Animate only on mouseover object
+- [ ] Login Page
+- [ ] Adaptative Cart 
+
+
+
 **Design :**
 <https://www.figma.com/file/IyzCuuXuzRHhmPcgKNFIsf/Projet-Web-APP3?type=design&node-id=0%3A1&mode=design&t=xyl50WpWNm5dfTto-1>
 
