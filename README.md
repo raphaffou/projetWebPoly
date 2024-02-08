@@ -21,6 +21,7 @@ Front TODO :
 - [ ] Animate only on mouseover object
 - [ ] Login Page
 - [ ] Adaptative Cart 
+- [ ] GENERATE PAGES FOR EACH PRODUCT
 
 
 
