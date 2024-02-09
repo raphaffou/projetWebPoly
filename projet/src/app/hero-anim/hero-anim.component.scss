@@ -13,8 +13,10 @@
   .hero-text {
     font-size: 8rem;
     text-transform: uppercase;
-    color: black;
+    color: gold;
     z-index: 10;
+    position: relative;
+    top : -5vh;
   }
 
   .dg.ac { //canvas
@@ -22,7 +24,7 @@
   }
   
   #container {
-    height: 100vh;
+    height: 100dvh;
     display: grid;
     place-items: center;
     position: relative;
@@ -32,7 +34,7 @@
   
   #hero-canvas {
     position: absolute;
-    top: 0;
+    top: 10vh;
     left: 0;
     outline: none;
     cursor: crosshair;
