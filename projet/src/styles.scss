@@ -22,6 +22,14 @@ a {
     text-decoration: inherit;
 }
 
+.animated-blob {
+    position: absolute;
+    width : 400rem;
+    top: 20vh;
+    right: 400vh;
+    z-index: 10;
+  }
+
 @media (max-width: 780px) {
     h2{
         font-size : 130px;

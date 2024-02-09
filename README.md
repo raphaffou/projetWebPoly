@@ -18,6 +18,7 @@ npm i @spline/loader
 
 
 Front TODO :
+- [ ] Put the blob at the right place + right colours
 - [ ] Animate only on mouseover object
 - [ ] Login Page
 - [ ] Adaptative Cart 
