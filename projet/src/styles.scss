@@ -1,8 +1,12 @@
 //@import url('https://fonts.googleapis.com/css2?family=Didot&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 //import ITC BERKELEY old style font
 
-$bcg-color: radial-gradient(202.3% 136.27% at 83.78% 10.5%, #E1FBFF 74.61%, rgba(225, 251, 255, 0.65) 100%);
+$main-color: #FDF7EC;
+$contrast-color: #734B5E;
+
 
 * {
     margin: 0;
@@ -12,8 +16,7 @@ $bcg-color: radial-gradient(202.3% 136.27% at 83.78% 10.5%, #E1FBFF 74.61%, rgba
 }
 
 body{
-    background: $bcg-color;
-    //background-color: #87CEEB;
+    background: $main-color;
 }
 
 a {
@@ -21,14 +24,6 @@ a {
     color: inherit;
     text-decoration: inherit;
 }
-
-.animated-blob {
-    position: absolute;
-    width : 400rem;
-    top: 20vh;
-    right: 400vh;
-    z-index: 10;
-  }
 
 @media (max-width: 780px) {
     h2{

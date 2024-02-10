@@ -6,7 +6,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import { HeaderComponent } from '../components/header/header.component';
-import * as dat from 'dat.gui';
+//import * as dat from 'dat.gui';
 import Stats from 'three/examples/jsm/libs/stats.module';
 
 @Component({
@@ -25,10 +25,8 @@ export class HeroComponent implements OnInit {
       height: container.clientHeight
     };
 
-    let mouse = new THREE.Vector2(0, 0);
+    let mouse = new THREE.Vector2(-1000000000, -10000000000); // init out of canvas to avoid raycaster bug
     let target = new THREE.Vector2(0, 0);
-    const halfX = window.innerWidth / 2;
-    const halfY = window.innerHeight / 2;
     let zoom = false;
 
 
@@ -149,6 +147,9 @@ export class HeroComponent implements OnInit {
 
     // --------------------- ANIMATION ---------------------
     const raycaster = new THREE.Raycaster();
+
+    mouse.set(-1000000000, -10000000000); // init out of canvas to avoid raycaster bug
+    zoom = false;
 
     async function animate() {
       target.x = mouse.x * 0.001;
