@@ -25,6 +25,13 @@ export class HeroComponent implements OnInit {
       height: container.clientHeight
     };
 
+    let mouse = new THREE.Vector2(0, 0);
+    let target = new THREE.Vector2(0, 0);
+    const halfX = window.innerWidth / 2;
+    const halfY = window.innerHeight / 2;
+    let zoom = false;
+
+
     const axesHelper = new THREE.AxesHelper(5);
     const stats = new Stats();
     document.body.appendChild(stats.dom);
@@ -97,15 +104,9 @@ export class HeroComponent implements OnInit {
 
 
     // --------------------- RESIZE AND INTERACT ---------------------
-    const mouse = new THREE.Vector2(0, 0);
-    const target = new THREE.Vector2(0, 0);
-    const halfX = window.innerWidth / 2;
-    const halfY = window.innerHeight / 2;
-    var zoom = false;
-
-    container.addEventListener('mousemove', (e: any) => {
-      mouse.x = e.clientX - halfX;
-      mouse.y = e.clientY - halfY;
+    container.addEventListener('pointermove', (e:any) => {
+      mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
     });
 
     /*
@@ -149,16 +150,18 @@ export class HeroComponent implements OnInit {
     // --------------------- ANIMATION ---------------------
     const raycaster = new THREE.Raycaster();
 
-    function animate() {
+    async function animate() {
       target.x = mouse.x * 0.001;
       target.y = mouse.y * 0.001;
 
       resizeCanvasToDisplaySize();
 
       raycaster.setFromCamera(mouse, camera);
-      
-      const intersects = raycaster.intersectObjects(scene.children);
-      zoom = intersects.length > 0;
+      await new Promise(_ => {
+        setTimeout(_, 10);
+        var intersects = raycaster.intersectObjects([model],true);
+        zoom = intersects.length > 0;
+      });
 
       if (zoom) {
         gsap.timeline({ defaults: { duration: 1.5, ease: "expo.out" } })

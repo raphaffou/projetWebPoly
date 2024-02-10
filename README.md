@@ -23,6 +23,7 @@ Front TODO :
 - [ ] Login Page
 - [ ] Adaptative Cart 
 - [ ] GENERATE PAGES FOR EACH PRODUCT
+- [ ] Use pointermove instead of mousemove
 
 
 
