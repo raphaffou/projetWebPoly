@@ -25,7 +25,11 @@ body::-webkit-scrollbar { /* Chrome, Safari, Opera */
 body{
     background: $main-color;
     -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+}
+@-moz-document url-prefix() { 
+    body{
+        scrollbar-width: none; /* Firefox */
+    }
 }
 
 
