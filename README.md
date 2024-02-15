@@ -18,13 +18,15 @@ npm i @spline/loader
 
 
 Front TODO :
-- [ ] Put the blob at the right place + right colours
+- [x] Put the blob at the right place + right colours
 - [x] Animate only on mouseover object
 - [ ] Login Page
 - [ ] Adaptative Cart 
 - [ ] GENERATE PAGES FOR EACH PRODUCT
 - [x] Use pointermove instead of mousemove
 - [ ] Animation plays once at load ???
+- [ ] Mobile version of homepage
+- [ ] Notification on cart if items in it
 
 
 

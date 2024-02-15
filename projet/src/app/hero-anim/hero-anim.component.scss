@@ -50,9 +50,17 @@
 
 #hero-canvas {
   position: absolute;
-  top: 10vh;
   left: 0;
   outline: none;
   cursor: crosshair;
   mix-blend-mode: overlay;
+}
+
+
+
+
+@media (max-width: 500px) {
+    .hero-text {
+        font-size: 5rem;
+    }
 }
