@@ -44,31 +44,25 @@
         <option value="40-50">40-50€</option>
       </select>
     </div>
-    <div class="filter">
-      <label for="brand">Marque</label>
-      <select id="brand">
-        <option value="all">Tous</option>
-        <option value="nuxe">Nuxe</option>
-        <option value="caudalie">Caudalie</option>
-        <option value="avene">Avène</option>
-        <option value="uriage">Uriage</option>
-        <option value="bioderma">Bioderma</option>
-      </select>
-    </div>
   </div>
 
   <div class="products">
     <div *ngFor="let product of products" class="product" (click)="openPage(product)">
+      
+      <div class="show">
+        <img [src]="product.image" alt="Image" width="200" height="200">
 
-      <img [src]="product.image" alt="Image" width="200" height="200">
+        <h3>
+          <a [title]="product.name + ' details'">
+            {{ product.name }}
+          </a>
+        </h3>
+      </div>
 
-      <h3>
-        <a [title]="product.name + ' details'">
-          {{ product.name }}
-        </a>
-      </h3>
-      <!-- Add to cart -->
-      <img src="../../../assets/cart.png" alt="cart" width="30" height="30">
+      <div class="buy">
+        <p> {{ product.price | currency }} </p>
+        <img title="Add to Cart" (click)="addtoCart(product)" src="../../assets/cart.svg" alt="cart" width="30" height="30">
+      </div>
 
     </div>
   </div>

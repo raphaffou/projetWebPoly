@@ -22,11 +22,11 @@ $image-width : 450px;
         }
     }
 }
+
 .text{
     text-align: center;
     padding-inline: 3em;
     width: 100vw;
-    margin-top : 50px;
     margin-bottom: 150px;
     text-transform: uppercase;
 
@@ -39,7 +39,7 @@ $image-width : 450px;
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    background-color: aquamarine;
+    background-color: #FDF7EC; // OR lighter ?
 
     .filters{
         display: flex;
@@ -52,31 +52,54 @@ $image-width : 450px;
         width: 80%;
 
         .filter{
+            display: flex;
+            width: 40vh;
             margin-inline: 10px;
             padding: 10px;
             border-radius: 10px;
             cursor: pointer;
-            transition: background-color 300ms cubic-bezier(0,0,0.5,1);
+            align-items: center;
 
-            &:hover{
-                background-color: #e5e5e5;
+            label{
+                margin-right: 12px;
+            }
+
+            select{
+                border: 1px solid #bfbfbf;
+                padding: 8px;
+                border-radius: 8px;
+                appearance: none;
+                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+                background-repeat: no-repeat;
+                background-position: right 4px center;
+                background-size: 1em;
+                padding-right: 26px;
+
+
+                &:focus-visible{
+                    outline: none;
+                }
+
+                option{
+                    padding: 15px;
+                    border-radius: 0;
+                }
             }
 
         }
     }
 
     .products{
+        width : 90%;
         display : grid;
-        //grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 20px;
         justify-content: center;
         grid-template-columns: repeat(3,1fr);
-        //grid : auto-flow / repeat(auto-fill, minmax(300px, 1fr));
         overflow: hidden;
-        width : 90%;
         margin-bottom: 50px;
+        //grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        //grid : auto-flow / repeat(auto-fill, minmax(300px, 1fr));
 
-        // https://geary.co/internal-borders-css-grid/
 
         .product{
             display: flex;
@@ -84,25 +107,48 @@ $image-width : 450px;
             align-items: center;
             position: relative;
 
+            .show{
+                text-align: center;
+
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+
+            .buy{
+                display: flex;
+                align-items: center;
+                gap: 10px;
+
+                img:hover{
+                    cursor: pointer;
+                }
+            }
+
+            // https://geary.co/internal-borders-css-grid/
+            &::before, &::after {
+                content: '';
+                position: absolute;
+                background-color: black;
+                z-index: 1;
+            }
+
+            &::before{
+                inline-size: 1px;
+                block-size: 110vh;
+                inset-block-start: 0;
+                inset-inline-start: calc(10px * -1);
+            }
+
+            &::after{
+                inline-size: 110vw;
+                block-size: 1px;
+                inset-inline-start: 0;
+                inset-block-start: calc(10px * -1);
+            }
+
         }
-        .product::before, .product::after{
-            content: '';
-            position: absolute;
-            background-color: black;
-            z-index: 1;
-        }
-        .product::before{
-            inline-size: 1px;
-            block-size: 110vh;
-            inset-block-start: 0;
-            inset-inline-start: calc(10px * -1);
-        }
-        .product::after{
-            inline-size: 110vw;
-            block-size: 1px;
-            inset-inline-start: 0;
-            inset-block-start: calc(10px * -1);
-        }
+
     }
 }
 

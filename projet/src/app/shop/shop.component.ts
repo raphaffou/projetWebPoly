@@ -23,9 +23,12 @@ export class ShopComponent {
   constructor(private router: Router) { }
 
   openPage(product: any) {
-    console.log('You are now on the product page!');
-    console.log(product);
     this.router.navigate(['/product-page', product.id]);
+  }
+
+  addtoCart(product: any) {
+    console.log('Your product has been added to the cart!');
+    //show animation cart too
   }
 
 

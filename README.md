@@ -19,7 +19,7 @@ npm i @spline/loader
 
 Front TODO :
 - [x] Shop Page
-- [ ] Shoppages perf (https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/?utm_source=lighthouse&utm_medium=devtools | resize images, )
+- [ ] Shop pages perf (https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/?utm_source=lighthouse&utm_medium=devtools | resize images, )
 - [ ] Story Page
 - [ ] Cart Page
 - [ ] Login Page
@@ -27,6 +27,7 @@ Front TODO :
 - [ ] Animation plays once at load ???
 - [ ] Responsive Cart
 - [ ] Notification on cart if items in it
+- [ ] Make the fitlers work in shop
 - [x] Put the blob at the right place + right colours
 - [x] Animate only on mouseover object
 - [x] Use pointermove instead of mousemove
