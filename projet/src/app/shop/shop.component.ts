@@ -4,6 +4,8 @@ import { HeaderComponent } from '../components/header/header.component';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
+import { Router } from '@angular/router';
+import { products } from '../products';
 
 @Component({
   selector: 'shop',
@@ -15,6 +17,16 @@ import { TextPlugin } from 'gsap/TextPlugin';
 export class ShopComponent {
   //https://codepen.io/sunshinetainted/pen/vYeGVNd
   //https://codepen.io/NewbieRuby/pen/rNYejNb
+
+  products = products;
+
+  constructor(private router: Router) { }
+
+  openPage(product: any) {
+    console.log('You are now on the product page!');
+    console.log(product);
+    this.router.navigate(['/product-page', product.id]);
+  }
 
 
   ngOnInit() {
