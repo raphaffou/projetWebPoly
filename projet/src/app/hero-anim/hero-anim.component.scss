@@ -29,22 +29,12 @@
   z-index: 1000000 !important;
 }
 
-
-.animated-blob {
-  position: absolute;
-  top: -62vh;
-  right: -62vh;
-  z-index: -1;
-}
-
-
-
 #container {
   height: 100dvh;
   display: grid;
+  z-index: 1;
   place-items: center;
   position: relative;
-  z-index: 1;
   text-align: center;
 }
 
@@ -57,7 +47,28 @@
 }
 
 
+.animated-blob {
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  z-index: 50;
+  mix-blend-mode: darken;
+  top : -505px;
+  right: -525px;
+  overflow: hidden;
+}
 
+@media (max-width: 967px) {
+  .animated-blob {
+      right : calc(-525px + ((-967px + 100vw) / (2 * 967)) * 525 );
+  }
+}
+
+@media (max-width: 780px) {
+  .animated-blob {
+      right : calc(-600px + ((-760px + 100vw) / (2 * 760)) * 600);
+  }
+}
 
 @media (max-width: 500px) {
     .hero-text {

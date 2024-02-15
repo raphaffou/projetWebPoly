@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import * as THREE from 'three'; // base version : 0.106.2  | v0.110.0 works
 import { gsap } from "gsap";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import { HeaderComponent } from '../components/header/header.component';
 //import * as dat from 'dat.gui';
-import Stats from 'three/examples/jsm/libs/stats.module';
+import Stats from 'three/examples/jsm/libs/stats.module.js';
 
 @Component({
   selector: 'hero',

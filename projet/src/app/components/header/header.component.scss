@@ -1,5 +1,5 @@
 #header{
-    z-index: 10000;
+    z-index: 100;
     width: 100%;
     position: fixed;
     display: flex;
@@ -36,21 +36,3 @@
     cursor: pointer;
 }
 
-.animated-blob {
-    position: absolute;
-    top : -505px;
-    right: -525px;
-    z-index: -1;
-}
-
-@media (max-width: 967px) {
-    .animated-blob {
-        right : calc(-525px + ((-967px + 100vw) / (2 * 967)) * 525 );
-    }
-}
-
-@media (max-width: 780px) {
-    .animated-blob {
-        right : calc(-600px + ((-760px + 100vw) / (2 * 760)) * 600);
-    }
-}

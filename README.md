@@ -18,16 +18,18 @@ npm i @spline/loader
 
 
 Front TODO :
+- [ ] Shop Page + perf (https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/?utm_source=lighthouse&utm_medium=devtools | resize images, )
+- [ ] Story Page
+- [ ] Cart Page
+- [ ] Login Page
+- [ ] GENERATE PAGES FOR EACH PRODUCT
+- [ ] Animation plays once at load ???
+- [ ] Adaptative Cart
+- [ ] Notification on cart if items in it
 - [x] Put the blob at the right place + right colours
 - [x] Animate only on mouseover object
-- [ ] Login Page
-- [ ] Adaptative Cart 
-- [ ] GENERATE PAGES FOR EACH PRODUCT
 - [x] Use pointermove instead of mousemove
-- [ ] Animation plays once at load ???
-- [ ] Mobile version of homepage
-- [ ] Notification on cart if items in it
-
+- [x] Mobile version of homepage (mostly)
 
 
 **Design :**
