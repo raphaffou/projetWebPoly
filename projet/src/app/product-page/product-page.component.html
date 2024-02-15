@@ -1,7 +1,21 @@
-<img [src]="product.image" alt="Image" width="200" height="200">
+<app-header></app-header>
 
-<h3>
-  <a [title]="product.name + ' details'">
-    {{ product.name }}
-  </a>
-</h3>
+<div class="product">
+    <img [src]="product.image" alt="Image" width="500" height="500">
+
+    <h3>
+      <a [title]="product.name + ' details'">
+        {{ product.name }}
+      </a>
+    </h3>
+
+    <p>
+        {{ product.description }}
+    </p>
+    <div>
+        <strong>Price: {{ product.price | currency }}</strong>
+        <img (click)="addToCart()" src="../../assets/cart.svg" title="Add to cart" alt="Cart" width="20" height="20">
+    </div>
+
+</div>
+
