@@ -4,7 +4,9 @@ Le projet du cours web de chez polytech paris saclay
 Prérequis :
 - node 21.0.0
 - npm 10.2.0
-
+    - Backend : 
+      - `npm install express typescript ts-node @types/node @types/express --save-dev`
+      - `npm install mariadb`
 
 ### Sujet du site :
 - jeux (UE Initiative)
