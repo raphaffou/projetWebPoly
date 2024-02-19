@@ -14,11 +14,12 @@ npm install three
 npm i --save-dev @types/three  
 npm install three-stdlib  
 npm i @spline/loader  
-
+- Backend : 
+      - `npm install express typescript ts-node @types/node @types/express --save-dev`
+      - `npm install mariadb`
 
 **Design :**
 <https://www.figma.com/file/IyzCuuXuzRHhmPcgKNFIsf/Projet-Web-APP3?type=design&node-id=0%3A1&mode=design&t=xyl50WpWNm5dfTto-1>
-
 
 ### Sujet du site :
 - jeux (UE Initiative)
