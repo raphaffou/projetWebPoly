@@ -14,6 +14,7 @@ const pool = mariadb.createPool({
     host: hostname, 
     user: username, 
     password: password,
+    database:database,
     connectionLimit: 5,
     port: dbport
 });
@@ -22,7 +23,9 @@ async function asyncFunction() {
     let conn;
     try {
       conn = await pool.getConnection();
-      const rows = await conn.query("SHOW TABLES");
+      console.log("Connected to DB")
+      var rows = await pool.query("SELECT * FROM user;");
+      console.log("Tables: ")
       console.log(rows); //[ {val: 1}, meta: ... ]
     //   const res = await conn.query("INSERT INTO myTable value (?, ?)", [1, "mariadb"]);
     //   console.log(res); // { affectedRows: 1, insertId: 1, warningStatus: 0 }
