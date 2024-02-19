@@ -12,5 +12,5 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, HeroComponent, PageNotFoundComponent]
 })
 export class AppComponent {
-  title = 'BRAND';
+  title = 'Nyxen';
 }

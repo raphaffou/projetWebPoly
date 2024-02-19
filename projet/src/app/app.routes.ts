@@ -5,6 +5,7 @@ import { HeroComponent } from './hero-anim/hero-anim.component';
 import { StoryComponent } from './story/story.component';
 import { ShopComponent } from './shop/shop.component';
 import { CartComponent } from './cart/cart.component';
+import { ProductPageComponent } from './product-page/product-page.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -12,5 +13,6 @@ export const routes: Routes = [
     { path: 'story', component: StoryComponent},
     { path: 'shop', component: ShopComponent},
     { path: 'cart', component: CartComponent},
+    { path: 'product-page/:id', component: ProductPageComponent },
     { path: '**', title:'404', component: PageNotFoundComponent }, // Wildcard route for a 404 page
 ];

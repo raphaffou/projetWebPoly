@@ -1,8 +1,24 @@
 #header{
+    z-index: 100;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    top : 0;
     font-weight: 600;
     font-size: large;
+    background-color: #FDF7EC;
+    
     text-transform: uppercase;
     font-variant: small-caps;
+
+    .left-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }
 
 #cart-img{
@@ -19,3 +35,4 @@
     margin: 0 10px;
     cursor: pointer;
 }
+
