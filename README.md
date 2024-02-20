@@ -25,6 +25,7 @@ Front TODO :
 - [ ] Login Page
 - [ ] Animation plays once at load ???
 - [ ] Make the filters work in shop
+- [ ] Reduce LOAD DELAY !
 - [ ] Beautify
 - [ ] Mobile version (<img ngSrc="cat.jpg" width="400" height="200" sizes="(max-width: 768px) 100vw, 50vw">)
 - [x] Shop pages perf 

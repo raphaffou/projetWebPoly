@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgOptimizedImage } from '@angular/common';
 import * as THREE from 'three'; // base version : 0.106.2  | v0.110.0 works
 import { gsap } from "gsap";
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import { HeaderComponent } from '../header/header.component';
@@ -36,7 +36,7 @@ export class HeroComponent implements OnInit {
 
 
     //--------------------- LIGHTS ---------------------
-    const ambientLight = new THREE.AmbientLight(0x404040, 70);
+    const ambientLight = new THREE.AmbientLight(0xfffffff, 4);
     scene.add(ambientLight);
 
     const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
@@ -82,7 +82,7 @@ export class HeroComponent implements OnInit {
     loader.setDRACOLoader(dracoLoader);
     let model: any;
 
-    loader.load('../assets/3dModels/cosmetics__skin_care_product_-_free.glb',
+    loader.load('../assets/3dModels/cream_shiny.glb',
       function (gltf: any) {
         model = gltf.scene;
         animate();
