@@ -7,7 +7,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import { HeaderComponent } from '../components/header/header.component';
 //import * as dat from 'dat.gui';
-import Stats from 'three/examples/jsm/libs/stats.module.js';
+//import Stats from 'three/examples/jsm/libs/stats.module.js';
 
 @Component({
   selector: 'hero',
@@ -30,9 +30,9 @@ export class HeroComponent implements OnInit {
     let zoom = false;
 
 
-    const axesHelper = new THREE.AxesHelper(5);
-    const stats = new Stats();
-    document.body.appendChild(stats.dom);
+    // const axesHelper = new THREE.AxesHelper(5);
+    // const stats = new Stats();
+    // document.body.appendChild(stats.dom);
 
 
     //--------------------- LIGHTS ---------------------
@@ -176,9 +176,9 @@ export class HeroComponent implements OnInit {
       }
 
       //controls.update();
+      //stats.update();
       renderer.render(scene, camera);
       window.requestAnimationFrame(animate);
-      stats.update();
     };
     animate();
   }

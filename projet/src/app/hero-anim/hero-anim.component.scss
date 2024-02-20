@@ -51,11 +51,12 @@
   position: absolute;
   overflow-x: hidden;
   overflow-y: hidden;
-  z-index: 50;
+  z-index: 500;
   mix-blend-mode: darken;
   top : -505px;
   right: -525px;
   overflow: hidden;
+  pointer-events: none;
 }
 
 @media (max-width: 967px) {
