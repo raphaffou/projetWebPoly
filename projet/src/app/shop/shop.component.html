@@ -2,16 +2,16 @@
 
 <div id="caroussel">
   <div class = "product-showcase">
-      <img ngSrc="../../../assets/products/oil.jpg" width="450" height="520" alt="oil">
+      <img ngSrc="../../../assets/products/normal_desktop/oil.jpg" width="450" height="520" alt="oil" rel="preload" priority>
   </div>
   <div class = "product-showcase">
-      <img ngSrc="../../../assets/products/cream_pot.jpg" width="450" height="520" alt="cream pot">
+      <img ngSrc="../../../assets/products/normal_desktop/cream_pot.jpg" width="450" height="520" alt="cream pot" rel="preload" priority>
   </div>
   <div class = "product-showcase">
-      <img ngSrc="../../../assets/products/hand_cream.jpg" width="450" height="520" alt="hand cream">
+      <img ngSrc="../../../assets/products/normal_desktop/hand_cream.jpg" width="450" height="520" alt="hand cream" priority>
   </div>
   <div class = "product-showcase">
-      <img ngSrc="../../../assets/products/skincare.jpg" width="450" height="520" alt="skincare">
+      <img ngSrc="../../../assets/products/normal_desktop/skincare.jpg" width="450" height="520" alt="skincare" priority>
   </div>
 </div>
 
@@ -50,7 +50,7 @@
     <div *ngFor="let product of products" class="product" (click)="openPage(product)">
       
       <div class="show">
-        <img [src]="product.image" alt="Image" width="200" height="200">
+        <img [src]="product.image" alt="Image" width="200" height="200" loading="lazy" fetchpriority="low">
 
         <h3>
           <a [title]="product.name + ' details'">

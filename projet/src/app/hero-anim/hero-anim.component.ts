@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import * as THREE from 'three'; // base version : 0.106.2  | v0.110.0 works
 import { gsap } from "gsap";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
@@ -12,7 +12,7 @@ import { HeaderComponent } from '../header/header.component';
 @Component({
   selector: 'hero',
   standalone: true,
-  imports: [CommonModule, HeaderComponent],
+  imports: [CommonModule, HeaderComponent, NgOptimizedImage],
   templateUrl: './hero-anim.component.html',
   styleUrl: './hero-anim.component.scss'
 })
@@ -161,7 +161,6 @@ export class HeroComponent implements OnInit {
 
       if(model){
         var intersects = raycaster.intersectObjects([model],true);
-        console.log(intersects)
         zoom = intersects.length > 0;
       }
 

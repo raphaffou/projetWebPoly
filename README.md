@@ -21,11 +21,14 @@ npm version : 10.1.0
 
 
 Front TODO :
-- [ ] Shop pages perf 
 - [ ] Story Page
 - [ ] Login Page
 - [ ] Animation plays once at load ???
 - [ ] Make the filters work in shop
+- [ ] Beautify
+- [ ] Mobile version (<img ngSrc="cat.jpg" width="400" height="200" sizes="(max-width: 768px) 100vw, 50vw">)
+- [x] Shop pages perf 
+- [x] Font work
 - [x] Cart Page
 - [x] GENERATE PAGES FOR EACH PRODUCT
 - [x] Shop Page
