@@ -16,8 +16,8 @@ $image-width : 450px;
 
         img{
             height: 520px;
-            width: $image-width;
-            object-fit : cover; //contain; is good
+            width: 450px;
+            object-fit : cover;
             border-radius: 32px;
         }
     }

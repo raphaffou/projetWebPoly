@@ -1,8 +1,5 @@
-//@import url('https://fonts.googleapis.com/css2?family=Didot&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
-//@import url('https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
-//import ITC BERKELEY old style font
+@use 'assets/_font_import';
+
 
 $main-color: #FDF7EC;
 $contrast-color: #734B5E;

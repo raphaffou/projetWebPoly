@@ -5,12 +5,13 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
 import { Router } from '@angular/router';
+import { NgOptimizedImage } from '@angular/common'
 import { products } from '../products';
 
 @Component({
   selector: 'shop',
   standalone: true,
-  imports: [ HeaderComponent, CommonModule],
+  imports: [ HeaderComponent, CommonModule, NgOptimizedImage],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss'
 })
