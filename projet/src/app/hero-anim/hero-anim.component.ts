@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
-import { HeaderComponent } from '../components/header/header.component';
+import { HeaderComponent } from '../header/header.component';
 //import * as dat from 'dat.gui';
 //import Stats from 'three/examples/jsm/libs/stats.module.js';
 
@@ -82,7 +82,7 @@ export class HeroComponent implements OnInit {
     loader.setDRACOLoader(dracoLoader);
     let model: any;
 
-    loader.load('../assets/cosmetics__skin_care_product_-_free.glb',
+    loader.load('../assets/3dModels/cosmetics__skin_care_product_-_free.glb',
       function (gltf: any) {
         model = gltf.scene;
         animate();
@@ -148,7 +148,7 @@ export class HeroComponent implements OnInit {
     // --------------------- ANIMATION ---------------------
     const raycaster = new THREE.Raycaster();
 
-    mouse.set(-1000000000, -10000000000); // init out of canvas to avoid raycaster bug
+    mouse.set(-1000, -1000); // init out of canvas to avoid raycaster bug
     zoom = false;
 
     async function animate() {
@@ -158,11 +158,12 @@ export class HeroComponent implements OnInit {
       resizeCanvasToDisplaySize();
 
       raycaster.setFromCamera(mouse, camera);
-      await new Promise(_ => {
-        setTimeout(_, 10);
+
+      if(model){
         var intersects = raycaster.intersectObjects([model],true);
+        console.log(intersects)
         zoom = intersects.length > 0;
-      });
+      }
 
       if (zoom) {
         gsap.timeline({ defaults: { duration: 1.5, ease: "expo.out" } })
@@ -175,11 +176,10 @@ export class HeroComponent implements OnInit {
           .to(model.scale, { duration: .75, x: 10, y: 10, z: 10 });
       }
 
-      //controls.update();
-      //stats.update();
+      // controls.update();
+      // stats.update();
       renderer.render(scene, camera);
       window.requestAnimationFrame(animate);
     };
-    animate();
   }
 }

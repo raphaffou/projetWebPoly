@@ -8,12 +8,13 @@ Prérequis :
 ## Setup
 npm version : 10.1.0  
 
-npm install -g @angular/cli  
-npm install gsap  
-npm install three  
-npm i --save-dev @types/three  
-npm install three-stdlib  
-npm i @spline/loader  
+`npm install -g @angular/cli`  
+`npm install gsap`  
+`npm install three`  
+`npm i --save-dev @types/three`  
+`npm install three-stdlib`  
+`npm i @spline/loader`  
+
 - Backend : 
       - `npm install express typescript ts-node @types/node @types/express --save-dev`
       - `npm install mariadb`
@@ -24,7 +25,7 @@ Front TODO :
 - [ ] Story Page
 - [ ] Login Page
 - [ ] Animation plays once at load ???
-- [ ] Make the fitlers work in shop
+- [ ] Make the filters work in shop
 - [x] Cart Page
 - [x] GENERATE PAGES FOR EACH PRODUCT
 - [x] Shop Page

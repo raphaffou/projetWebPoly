@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { products } from '../products';
-import { HeaderComponent } from '../components/header/header.component';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-product-page',
