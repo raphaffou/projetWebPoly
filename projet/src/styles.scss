@@ -1,36 +1,46 @@
 //@import url('https://fonts.googleapis.com/css2?family=Didot&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
 //import ITC BERKELEY old style font
+
+$main-color: #FDF7EC;
+$contrast-color: #734B5E;
+
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Garamond', serif;
+    //font-family: 'Garamond', serif;
+    user-select: none;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
 }
 
+body::-webkit-scrollbar { /* Chrome, Safari, Opera */
+    display: none;
+}
 body{
-    background: radial-gradient(202.3% 136.27% at 83.78% 10.5%, #E1FBFF 74.61%, rgba(225, 251, 255, 0.65) 100%);
-    //background-color: #87CEEB;
+    background: $main-color;
+    -ms-overflow-style: none;  /* IE and Edge */
+}
+@-moz-document url-prefix() { 
+    body{
+        scrollbar-width: none; /* Firefox */
+    }
 }
 
-#header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: nowrap;
-}
-
-.left-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 a {
     padding: 10px;
     color: inherit;
     text-decoration: inherit;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    user-select: text;
 }
 
 @media (max-width: 780px) {

@@ -18,6 +18,24 @@ npm i @spline/loader
       - `npm install express typescript ts-node @types/node @types/express --save-dev`
       - `npm install mariadb`
 
+
+Front TODO :
+- [ ] Shop pages perf (https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/?utm_source=lighthouse&utm_medium=devtools | resize images, )
+- [ ] Story Page
+- [ ] Login Page
+- [ ] Animation plays once at load ???
+- [ ] Make the fitlers work in shop
+- [x] Cart Page
+- [x] GENERATE PAGES FOR EACH PRODUCT
+- [x] Shop Page
+- [x] Responsive Cart
+- [x] Notification on cart if items in it
+- [x] Put the blob at the right place + right colours
+- [x] Animate only on mouseover object
+- [x] Use pointermove instead of mousemove
+- [x] Mobile version of homepage (mostly)
+
+
 **Design :**
 <https://www.figma.com/file/IyzCuuXuzRHhmPcgKNFIsf/Projet-Web-APP3?type=design&node-id=0%3A1&mode=design&t=xyl50WpWNm5dfTto-1>
 
@@ -98,6 +116,8 @@ Spline 3D
 https://www.turbosquid.com/Search/3D-Models/free/cosmetic-tube  
 
 ### 3D Model
+
+https://optimizeglb.com/  
 
 https://app.spline.design/file/f0780ea8-c5c2-467d-84dd-f10bcae43c85 (pot)  
 https://app.spline.design/library/bb106a46-9df9-4486-9f6e-3d37b0d12d75 (long tube)  
