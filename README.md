@@ -8,12 +8,12 @@ Prérequis :
 ## Setup
 npm version : 10.1.0  
 
-npm install -g @angular/cli  
-npm install gsap  
-npm install three  
-npm i --save-dev @types/three  
-npm install three-stdlib  
-npm i @spline/loader  
+`npm install -g @angular/cli`  
+`npm install gsap`  
+`npm install three`  
+`npm i --save-dev @types/three`  
+`npm install three-stdlib`  
+
 - Backend : 
       - `npm install express typescript ts-node @types/node @types/express --save-dev`
       - `npm install mariadb`
