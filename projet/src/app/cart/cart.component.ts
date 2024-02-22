@@ -13,7 +13,7 @@ import { ProductService } from '../product.service';
 })
 export class CartComponent {
 
-  constructor(private cartService: CartService, public productService: ProductService) {}
+  constructor(public cartService: CartService, public productService: ProductService) {}
 
   getItems() {
     return this.cartService.getItems();
