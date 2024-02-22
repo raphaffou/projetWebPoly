@@ -7,6 +7,7 @@ import { Product } from '../products';
 export class CartService {
   items: Map<number, number> = new Map();
   itemCount = signal(0);
+  totalAmount = 0;
 
   constructor() { }
 
@@ -17,6 +18,7 @@ export class CartService {
     else
       this.items.set(product.id, count+1);
     this.itemCount.update(value => value + 1);
+    this.totalAmount += product.price;
   }
 
   getItems() {
@@ -26,9 +28,14 @@ export class CartService {
   clearCart() {
     this.items.clear();
     this.itemCount.set(0);
+    this.totalAmount = 0;
   }
 
   getItemCount() {
     return this.itemCount();
+  }
+
+  getTotalAmount() {
+    return this.totalAmount;
   }
 }

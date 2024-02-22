@@ -9,4 +9,6 @@
   <div >{{ productService.getProductName(item.key) }}: {{ item.value }}</div>
 </div>
 
+<div>Total: {{ cartService.getTotalAmount() | currency }}</div>
+
 <button (click)="cartService.clearCart()">Clear cart</button>
