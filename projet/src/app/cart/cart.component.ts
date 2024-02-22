@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../components/header/header.component';
 import { CartService } from './cart.service';
+import { ProductService } from '../product.service';
 
 @Component({
   selector: 'cart',
@@ -11,7 +12,10 @@ import { CartService } from './cart.service';
   styleUrl: './cart.component.scss'
 })
 export class CartComponent {
-  items = this.cartService.getItems();
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, public productService: ProductService) {}
+
+  getItems() {
+    return this.cartService.getItems();
+  }
 }

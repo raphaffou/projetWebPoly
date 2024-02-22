@@ -5,13 +5,19 @@ import { Product } from '../products';
   providedIn: 'root'
 })
 export class CartService {
-  items: Product[] = [];
+  items: Map<number, number> = new Map();
+  //items: Product[] = [];
   itemCount = signal(0);
 
   constructor() { }
 
   addToCart(product: Product) {
-    this.items.push(product);
+    //this.items.push(product);
+    let count = this.items.get(product.id);
+    if (! count)
+      this.items.set(product.id, 1);
+    else
+      this.items.set(product.id, count+1);
     this.itemCount.update(value => value + 1);
   }
 
@@ -20,7 +26,7 @@ export class CartService {
   }
 
   clearCart() {
-    this.items = [];
+    //this.items = [];
     return this.items;
   }
 

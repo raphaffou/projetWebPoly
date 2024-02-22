@@ -5,7 +5,7 @@
 
 <div>Cart</div>
 
-<div class="cart-item" *ngFor="let item of items">
-  <span>{{ item.name }}</span>
-  <span>{{ item.price | currency }}</span>
+<div class="cart-item" *ngFor="let item of getItems() | keyvalue">
+  <div >{{ productService.getProductName(item.key) }}: {{ item.value }}</div>
+  <!-- <span>{{ item.price | currency }}</span> -->
 </div>
