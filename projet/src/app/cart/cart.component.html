@@ -1,2 +1,11 @@
-<app-header></app-header>
-<p>cart works!</p>
+ <!--
+    TODO: Fix app-header display 
+    <app-header></app-header> 
+-->
+
+<div>Cart</div>
+
+<div class="cart-item" *ngFor="let item of items">
+  <span>{{ item.name }}</span>
+  <span>{{ item.price | currency }}</span>
+</div>

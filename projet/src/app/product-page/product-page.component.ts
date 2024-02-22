@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { products } from '../products';
 import { HeaderComponent } from '../components/header/header.component';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-product-page',
@@ -14,7 +15,7 @@ import { HeaderComponent } from '../components/header/header.component';
 export class ProductPageComponent implements OnInit {
   product: any;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private cartService: CartService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -22,9 +23,8 @@ export class ProductPageComponent implements OnInit {
     });
   }
 
-  //add to cart
   addToCart() {
+    this.cartService.addToCart(this.product);
     console.log('Your product has been added to the cart!');
-    //add this.product
   }
 }
