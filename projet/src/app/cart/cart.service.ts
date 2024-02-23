@@ -29,12 +29,15 @@ export class CartService {
   }
 
   addToCart(product: Product) {
-    // TODO: control quantity (1-5)
     let count = this.items.get(product.id);
     if (! count)
       this.items.set(product.id, 1);
-    else
+    else {
+      // max five items of the same product in cart
+      if (count == 5)
+        return;
       this.items.set(product.id, count+1);
+    }
 
     this.itemCount.update(value => value + 1);
     this.totalAmount += product.price;
