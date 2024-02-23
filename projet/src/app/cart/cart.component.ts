@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../components/header/header.component';
 import { CartService } from './cart.service';
 import { ProductService } from '../product.service';
+import { ChevronDownComponent } from '../../assets/chevron-down/chevron-down.component';
 
 @Component({
   selector: 'cart',
   standalone: true,
-  imports: [HeaderComponent, CommonModule],
+  imports: [HeaderComponent, CommonModule, ChevronDownComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })

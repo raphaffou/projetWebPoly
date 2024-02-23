@@ -25,4 +25,12 @@ export class ProductService {
   getProductPrice(productId: number) {
     return this.getProductById(productId)?.price;
   }
+
+  getProductDescription(productId: number) {
+    return this.getProductById(productId)?.description;
+  }
+
+  getProductImagePath(productId: number) {
+    return this.getProductById(productId)?.image;
+  }
 }
