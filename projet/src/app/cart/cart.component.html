@@ -7,6 +7,7 @@
 
 <div class="cart-item" *ngFor="let item of getItems() | keyvalue">
   <div >{{ productService.getProductName(item.key) }}: {{ item.value }}</div>
+  <button (click)="cartService.removeFromCart(item.key)">Remove</button>
 </div>
 
 <div>Total: {{ cartService.getTotalAmount() | currency }}</div>

@@ -1,5 +1,7 @@
 import { Injectable, WritableSignal, signal } from '@angular/core';
 import { Product } from '../products';
+import { producerNotifyConsumers } from '@angular/core/primitives/signals';
+import { ProductService } from '../product.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ export class CartService {
   totalAmount: number;
   storageKey = "cart";
 
-  constructor() {
+  constructor(private productService: ProductService) {
     let cartString = sessionStorage.getItem(this.storageKey);
     if (cartString) {
     // session storage contains cart items
@@ -36,12 +38,19 @@ export class CartService {
     this.itemCount.update(value => value + 1);
     this.totalAmount += product.price;
 
-    // update session storage
-    sessionStorage.setItem(this.storageKey, JSON.stringify({
-      items: JSON.stringify(Array.from(this.items.entries())),
-      itemCount: this.itemCount(),
-      totalAmount: this.totalAmount
-    }));
+    this.updateSessionStorage();
+  }
+
+  removeFromCart(productId: number) {
+    let product = this.productService.getProductById(productId);
+    let count = this.items.get(productId);
+
+    // FIXME: if count undefined -> delete entry from items?
+    this.items.delete(productId);
+    this.itemCount.update(value => count ? value-count : value);
+    this.totalAmount -= count && product?.price ? count*product?.price : 0;
+
+    this.updateSessionStorage();
   }
 
   getItems() {
@@ -63,5 +72,13 @@ export class CartService {
 
   getTotalAmount() {
     return this.totalAmount;
+  }
+
+  private updateSessionStorage() {
+    sessionStorage.setItem(this.storageKey, JSON.stringify({
+      items: JSON.stringify(Array.from(this.items.entries())),
+      itemCount: this.itemCount(),
+      totalAmount: this.totalAmount
+    }));
   }
 }
