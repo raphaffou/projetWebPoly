@@ -29,6 +29,7 @@ export class CartService {
   }
 
   addToCart(product: Product) {
+    // TODO: control quantity (1-5)
     let count = this.items.get(product.id);
     if (! count)
       this.items.set(product.id, 1);
@@ -48,7 +49,28 @@ export class CartService {
     // FIXME: if count undefined -> delete entry from items?
     this.items.delete(productId);
     this.itemCount.update(value => count ? value-count : value);
-    this.totalAmount -= count && product?.price ? count*product?.price : 0;
+    this.totalAmount -= count && product?.price ? count * product?.price : 0;
+
+    this.updateSessionStorage();
+  }
+
+  setItemQuantity(productId: number, quantity: number|string) {
+    // FIXME: only allow numbers
+    let quantityNew: number;
+    if (typeof quantity == 'string')
+      quantityNew = Number(quantity);
+    else
+      quantityNew = quantity;
+
+    // TODO: add methods to calculate and update itemCount and totalAmount dynamically
+    let quantityOld = this.items.get(productId);
+    let product = this.productService.getProductById(productId);
+
+    this.items.set(productId, quantityNew);
+
+    this.itemCount.update(value => quantityOld ? value-quantityOld+quantityNew : value);
+    this.totalAmount -= quantityOld && product?.price ? quantityOld * product?.price : 0;
+    this.totalAmount += product?.price ? quantityNew * product?.price : 0;
 
     this.updateSessionStorage();
   }

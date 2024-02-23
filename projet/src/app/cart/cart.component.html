@@ -7,6 +7,9 @@
 
 <div class="cart-item" *ngFor="let item of getItems() | keyvalue">
   <div >{{ productService.getProductName(item.key) }}: {{ item.value }}</div>
+  <select #itemQuantity (change)="cartService.setItemQuantity(item.key, itemQuantity.value)" id="item-quantity">
+    <option *ngFor="let i of getQuantityArray()" value="{{ i }}" [attr.selected]="item.value == i ? true : null">{{ i }}</option>
+  </select>
   <button (click)="cartService.removeFromCart(item.key)">Remove</button>
 </div>
 
