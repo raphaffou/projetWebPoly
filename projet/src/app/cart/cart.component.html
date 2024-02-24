@@ -1,11 +1,17 @@
-<app-header></app-header> 
+<app-header></app-header>
 
+<!-- TODO: handle empty cart case -->
 <div id="cart">
-  <div id="cart-items">
-  <div class="title" id="cart-title">Cart</div>
+  <div id="cart-items" class="container">
+    <div id="cart-header">
+      <span class="title-1">Cart</span>
+      <!-- TODO: replace with waste basket icon -->
+      <button id="clear-cart" (click)="cartService.clearCart()">Clear cart</button>
+    </div>
 
     <div class="cart-item" *ngFor="let item of getItems() | keyvalue">
-      <img id="product-img" src="{{ productService.getProductImagePath(item.key) }}">
+      <!-- FIXME: product details display in case image isn't displayed properly -->
+      <img id="product-img" src="{{ productService.getProductImagePath(item.key) }}" alt="{{ productService.getProductName(item.key) }}">
 
       <div class="item-details">
         <span class="title">{{ productService.getProductName(item.key) }}</span>
@@ -23,10 +29,23 @@
       </div>
 
     </div>
-
   </div>
 
-  <div>Total: {{ cartService.getTotalAmount() | currency }}</div>
-  <button (click)="cartService.clearCart()">Clear cart</button>
+  <div id="order" class="container">
+    <div class="title-1">Order</div>
+    <div id="subtotal" class="order-details">
+      <span class="title">Subtotal</span>
+      <span>{{ cartService.getTotalAmount() | currency }}</span>
+    </div>
+    <div id="shipping" class="order-details">
+      <span class="title">Shipping</span>
+      <span>...</span>
+    </div>
+    <div id="total" class="order-details">
+      <span class="title">Total</span>
+      <span>...</span>
+    </div>
+  </div>
+
 </div>
 
