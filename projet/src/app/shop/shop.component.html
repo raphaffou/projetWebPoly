@@ -2,24 +2,30 @@
 
 <div id="caroussel">
   <div class = "product-showcase">
-      <img src="../../../assets/products/oil.jpg" width="450" height="520" alt="oil">
+      <img ngSrc="../../../assets/products/normal_desktop/oil.jpg" width="450" height="520" alt="oil" rel="preload" priority>
   </div>
   <div class = "product-showcase">
-      <img src="../../../assets/products/cream_pot.jpg" width="450" height="520" alt="cream pot">
+      <img ngSrc="../../../assets/products/normal_desktop/cream_pot.jpg" width="450" height="520" alt="cream pot" rel="preload" priority>
   </div>
   <div class = "product-showcase">
-      <img src="../../../assets/products/hand_cream.jpg" width="450" height="520" alt="hand cream">
+      <img ngSrc="../../../assets/products/normal_desktop/hand_cream.jpg" width="450" height="520" alt="hand cream" priority>
   </div>
   <div class = "product-showcase">
-      <img src="../../../assets/products/skincare.jpg" width="450" height="520" alt="skincare">
+      <img ngSrc="../../../assets/products/normal_desktop/skincare.jpg" width="450" height="520" alt="skincare" priority>
   </div>
 </div>
 
-<p class="text">
-  Bienvenue dans une nouvelle ère de produits cosmétiques où l'environnement est le facteur déterminant.
-  Nous vous proposons des produits de qualité, respectueux de l'environnement et de votre peau.
-  Notre gamme de produits est composée d'huiles, de crèmes et de soins pour le visage et les mains.
-</p>
+<div class="text">
+  <p>
+    Bienvenue dans une nouvelle ère de produits cosmétiques où l'environnement est le facteur déterminant.
+    Nous vous proposons des produits de qualité, respectueux de l'environnement et de votre peau.
+    Notre gamme de produits est composée d'huiles, de crèmes et de soins pour le visage et les mains.
+  </p>
+
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo iste sapiente, perferendis doloribus ducimus officia qui sequi, aspernatur, optio necessitatibus perspiciatis autem! Consequuntur voluptates reprehenderit illum molestias error! Eaque, molestiae.
+  </p>
+</div>
 
 <div class="product-list">
   <div class="filters"> 
@@ -50,7 +56,7 @@
     <div *ngFor="let product of products" class="product" (click)="openPage(product)">
       
       <div class="show">
-        <img [src]="product.image" alt="Image" width="200" height="200">
+        <img [src]="product.image" alt="Image" width="200" height="200" loading="lazy" fetchpriority="low">
 
         <h3>
           <a [title]="product.name + ' details'">
@@ -61,7 +67,7 @@
 
       <div class="buy">
         <p> {{ product.price | currency }} </p>
-        <img title="Add to Cart" (click)="addtoCart(product)" src="../../assets/cart.svg" alt="cart" width="30" height="30">
+        <img title="Add to Cart" (click)="addtoCart(product)" src="../../assets/icons/cart.svg" alt="cart" width="30" height="30">
       </div>
 
     </div>

@@ -8,28 +8,32 @@ Prérequis :
 ## Setup
 npm version : 10.1.0  
 
-npm install -g @angular/cli  
-npm install gsap  
-npm install three  
-npm i --save-dev @types/three  
-npm install three-stdlib  
-npm i @spline/loader  
+`npm install -g @angular/cli`  
+`npm install gsap`  
+`npm install three`  
+`npm i --save-dev @types/three`  
+`npm install three-stdlib`  
+
 - Backend : 
       - `npm install express typescript ts-node @types/node @types/express --save-dev`
       - `npm install mariadb`
 
 
 Front TODO :
-- [x] Shop Page
-- [ ] Shop pages perf (https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/?utm_source=lighthouse&utm_medium=devtools | resize images, )
 - [ ] Story Page
-- [ ] Cart Page
 - [ ] Login Page
-- [x] GENERATE PAGES FOR EACH PRODUCT
 - [ ] Animation plays once at load ???
-- [ ] Responsive Cart
-- [ ] Notification on cart if items in it
-- [ ] Make the fitlers work in shop
+- [ ] Make the filters work in shop
+- [ ] Reduce LOAD DELAY !
+- [ ] Beautify
+- [ ] Mobile version (<img ngSrc="cat.jpg" width="400" height="200" sizes="(max-width: 768px) 100vw, 50vw">)
+- [x] Shop pages perf 
+- [x] Font work
+- [x] Cart Page
+- [x] GENERATE PAGES FOR EACH PRODUCT
+- [x] Shop Page
+- [x] Responsive Cart
+- [x] Notification on cart if items in it
 - [x] Put the blob at the right place + right colours
 - [x] Animate only on mouseover object
 - [x] Use pointermove instead of mousemove
@@ -137,7 +141,3 @@ https://angular.io/tutorial/tour-of-heroes/toh-pt5
 https://stackoverflow.com/questions/51909800/how-to-navigate-to-other-page-in-angular-6 
 
 https://stackblitz.com/run?file=src%2Fapp%2Fapp.component.html,src%2Fapp%2Fapp-routing.module.ts,src%2Fapp%2Fapp-routing.module.11.ts
-
-
-## Questions
-- SSR ?

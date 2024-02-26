@@ -1,21 +1,31 @@
 <app-header></app-header>
 
-<div class="product">
-    <img [src]="product.image" alt="Image" width="500" height="500">
-
-    <h3>
-      <a [title]="product.name + ' details'">
-        {{ product.name }}
-      </a>
-    </h3>
-
-    <p>
-        {{ product.description }}
-    </p>
-    <div>
-        <strong>Price: {{ product.price | currency }}</strong>
-        <img (click)="addToCart()" src="../../assets/cart.svg" title="Add to cart" alt="Cart" width="20" height="20">
+<div class="container">
+  <div class="product">
+    <div class="left_col">
+      <img [src]="product.image" alt="Image" width="500" height="500">
     </div>
+    <div class="right_col">
+      <h3 class="title">
+        <a [title]="product.name + ' details'">
+          {{ product.name }}
+        </a>
+      </h3>
+  
+      <p class="description">
+          {{ product.description }}
+      </p>
 
+      <p class="price">
+        {{ product.price | currency: 'EUR' : 'symbol' : '0.2-2' : 'fr' }}
+      </p>
+
+      <button (click)="addToCart()" class="buy_btn"> 
+        Add to cart
+      </button>
+
+    </div>
+  </div>
 </div>
+
 

@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HeaderComponent } from '../components/header/header.component';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { HeaderComponent } from '../header/header.component';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
 import { Router } from '@angular/router';
 import { products } from '../products';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'shop',
   standalone: true,
-  imports: [ HeaderComponent, CommonModule],
+  imports: [ HeaderComponent, CommonModule, NgOptimizedImage],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss'
 })
@@ -20,15 +21,14 @@ export class ShopComponent {
 
   products = products;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private cartService: CartService) { }
 
   openPage(product: any) {
     this.router.navigate(['/product-page', product.id]);
   }
 
   addtoCart(product: any) {
-    console.log('Your product has been added to the cart!');
-    //show animation cart too
+    this.cartService.addToCart(product);
   }
 
 
@@ -37,6 +37,7 @@ export class ShopComponent {
 
     let products:any[] = gsap.utils.toArray(".product");
     let image_width:any = gsap.getProperty("#caroussel", "width", "px");
+    let header_height:any = gsap.getProperty("#header", 'height');
 
     gsap.to("#caroussel", {
       xPercent: -120,
@@ -44,13 +45,14 @@ export class ShopComponent {
       ease: "none",
       scrollTrigger: {
         trigger: "#caroussel",
-        start: () => `top-=${gsap.getProperty("#header", 'height')} top`,
-        end: () => image_width*(products.length-1)/products.length,
+        start: () => `top-=${header_height} top`,
+        end: () =>  image_width*(products.length-1)/products.length - 3*header_height,
         scrub: 1,
         pin: true,
         snap: image_width / (products.length - 1),
         invalidateOnRefresh: true,
-        anticipatePin: 0
+        anticipatePin: 0,
+        markers : true
       }
     });
 
@@ -62,14 +64,15 @@ export class ShopComponent {
 
       ScrollTrigger.create({
         trigger: section,
-        start: () => `top+=${gsap.getProperty(section, 'y')}/4 bottom-=100`, //${gsap.getProperty(section, 'y')}/4
-        end: () => `+=${section.clientHeight}`,
+        start: () => "top center",  //`top+=${gsap.getProperty(section, 'y')}/4 bottom-=100`, //${gsap.getProperty(section, 'y')}/4
+        end: () => "bottom center", //`+=${section.clientHeight}`,
         onEnter: () => {
           gsap.to(section, {y: 0, opacity: 1});
         },
         onLeaveBack: () => {
-          gsap.to(section, {y: 30, opacity: 0});
+          gsap.to(section, {y: 50, opacity: 0});
         },
+        markers: true,
         invalidateOnRefresh: true
       })});
 
