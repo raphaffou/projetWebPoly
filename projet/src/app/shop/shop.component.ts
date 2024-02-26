@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
 import { Router } from '@angular/router';
 import { products } from '../products';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'shop',
@@ -20,7 +21,7 @@ export class ShopComponent {
 
   products = products;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private cartService: CartService) { }
 
   openPage(product: any) {
     this.router.navigate(['/product-page', product.id]);
@@ -29,6 +30,7 @@ export class ShopComponent {
   addtoCart(product: any) {
     console.log('Your product has been added to the cart!');
     //show animation cart too
+    this.cartService.addToCart(product);
   }
 
 
