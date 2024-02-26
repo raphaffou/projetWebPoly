@@ -1,7 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@use '../../assets/_font_import';
 
 * {
   overflow-x: hidden;
+  overflow-y: hidden;
   -webkit-text-size-adjust: none;
   -ms-text-size-adjust: none;
   -moz-text-size-adjust: none;
@@ -13,16 +14,15 @@
 }
 
 .hero-text {
-  font-size: 8rem;
+  font-size: 10rem;
   font-family: Montserrat, sans-serif;
   text-transform: uppercase;
-  //text-shadow: 0px 0px 1px #F8D8E7;
-  color : #C894AE;
-  text-shadow: 0 0 .5px #400c26;
-
+  font-weight: 400;
+  color : hsl(333,60%,80%);// #F8D8E7;
+  text-shadow: 0 0 .5px #FFFFFF;// #400c26;
   z-index: 10;
   position: relative;
-  top : -5vh;
+  top : -15vh;
 }
 
 .dg.ac { //canvas
@@ -51,11 +51,12 @@
   position: absolute;
   overflow-x: hidden;
   overflow-y: hidden;
-  z-index: 50;
+  z-index: 500;
   mix-blend-mode: darken;
   top : -505px;
   right: -525px;
   overflow: hidden;
+  pointer-events: none;
 }
 
 @media (max-width: 967px) {

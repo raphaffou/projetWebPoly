@@ -20,11 +20,15 @@ npm version : 10.1.0
 
 
 Front TODO :
-- [ ] Shop pages perf (https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/?utm_source=lighthouse&utm_medium=devtools | resize images, )
 - [ ] Story Page
 - [ ] Login Page
 - [ ] Animation plays once at load ???
-- [ ] Make the fitlers work in shop
+- [ ] Make the filters work in shop
+- [ ] Reduce LOAD DELAY !
+- [ ] Beautify
+- [ ] Mobile version (<img ngSrc="cat.jpg" width="400" height="200" sizes="(max-width: 768px) 100vw, 50vw">)
+- [x] Shop pages perf 
+- [x] Font work
 - [x] Cart Page
 - [x] GENERATE PAGES FOR EACH PRODUCT
 - [x] Shop Page
@@ -137,7 +141,3 @@ https://angular.io/tutorial/tour-of-heroes/toh-pt5
 https://stackoverflow.com/questions/51909800/how-to-navigate-to-other-page-in-angular-6 
 
 https://stackblitz.com/run?file=src%2Fapp%2Fapp.component.html,src%2Fapp%2Fapp-routing.module.ts,src%2Fapp%2Fapp-routing.module.11.ts
-
-
-## Questions
-- SSR ?

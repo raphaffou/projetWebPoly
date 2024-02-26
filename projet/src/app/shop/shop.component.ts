@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HeaderComponent } from '../components/header/header.component';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { HeaderComponent } from '../header/header.component';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
 import { Router } from '@angular/router';
 import { products } from '../products';
+import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'shop',
   standalone: true,
-  imports: [ HeaderComponent, CommonModule],
+  imports: [ HeaderComponent, CommonModule, NgOptimizedImage],
   templateUrl: './shop.component.html',
   styleUrl: './shop.component.scss'
 })
@@ -20,15 +21,14 @@ export class ShopComponent {
 
   products = products;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private cartService: CartService) { }
 
   openPage(product: any) {
     this.router.navigate(['/product-page', product.id]);
   }
 
   addtoCart(product: any) {
-    console.log('Your product has been added to the cart!');
-    //show animation cart too
+    this.cartService.addToCart(product);
   }
 
 

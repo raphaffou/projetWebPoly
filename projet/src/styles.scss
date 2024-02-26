@@ -1,3 +1,4 @@
+//@use 'assets/_font_import';
 //@import url('https://fonts.googleapis.com/css2?family=Didot&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
 //@import url('https://fonts.googleapis.com/css2?family=Proxima+Nova:wght@100;200;300;400;500;600;700;800;900&display=swap');
@@ -25,6 +26,11 @@ body::-webkit-scrollbar { /* Chrome, Safari, Opera */
 body{
     background: $main-color;
     -ms-overflow-style: none;  /* IE and Edge */
+    overflow-x: hidden;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    -ms-overflow-style: none;
 }
 @-moz-document url-prefix() { 
     body{

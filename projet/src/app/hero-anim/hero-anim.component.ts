@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 import * as THREE from 'three'; // base version : 0.106.2  | v0.110.0 works
 import { gsap } from "gsap";
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
-import { HeaderComponent } from '../components/header/header.component';
+import { HeaderComponent } from '../header/header.component';
 //import * as dat from 'dat.gui';
-import Stats from 'three/examples/jsm/libs/stats.module.js';
+//import Stats from 'three/examples/jsm/libs/stats.module.js';
 
 @Component({
   selector: 'hero',
   standalone: true,
-  imports: [CommonModule, HeaderComponent],
+  imports: [CommonModule, HeaderComponent, NgOptimizedImage],
   templateUrl: './hero-anim.component.html',
   styleUrl: './hero-anim.component.scss'
 })
@@ -30,13 +30,13 @@ export class HeroComponent implements OnInit {
     let zoom = false;
 
 
-    const axesHelper = new THREE.AxesHelper(5);
-    const stats = new Stats();
-    document.body.appendChild(stats.dom);
+    // const axesHelper = new THREE.AxesHelper(5);
+    // const stats = new Stats();
+    // document.body.appendChild(stats.dom);
 
 
     //--------------------- LIGHTS ---------------------
-    const ambientLight = new THREE.AmbientLight(0x404040, 70);
+    const ambientLight = new THREE.AmbientLight(0xfffffff, 4);
     scene.add(ambientLight);
 
     const directionalLight = new THREE.DirectionalLight(0xffffff, 5);
@@ -82,7 +82,7 @@ export class HeroComponent implements OnInit {
     loader.setDRACOLoader(dracoLoader);
     let model: any;
 
-    loader.load('../assets/cosmetics__skin_care_product_-_free.glb',
+    loader.load('../assets/3dModels/cream_shiny.glb',
       function (gltf: any) {
         model = gltf.scene;
         animate();
@@ -148,7 +148,7 @@ export class HeroComponent implements OnInit {
     // --------------------- ANIMATION ---------------------
     const raycaster = new THREE.Raycaster();
 
-    mouse.set(-1000000000, -10000000000); // init out of canvas to avoid raycaster bug
+    mouse.set(-1000, -1000); // init out of canvas to avoid raycaster bug
     zoom = false;
 
     async function animate() {
@@ -158,11 +158,11 @@ export class HeroComponent implements OnInit {
       resizeCanvasToDisplaySize();
 
       raycaster.setFromCamera(mouse, camera);
-      await new Promise(_ => {
-        setTimeout(_, 10);
+
+      if(model){
         var intersects = raycaster.intersectObjects([model],true);
         zoom = intersects.length > 0;
-      });
+      }
 
       if (zoom) {
         gsap.timeline({ defaults: { duration: 1.5, ease: "expo.out" } })
@@ -175,11 +175,10 @@ export class HeroComponent implements OnInit {
           .to(model.scale, { duration: .75, x: 10, y: 10, z: 10 });
       }
 
-      //controls.update();
+      // controls.update();
+      // stats.update();
       renderer.render(scene, camera);
       window.requestAnimationFrame(animate);
-      stats.update();
     };
-    animate();
   }
 }
