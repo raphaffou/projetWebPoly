@@ -26,6 +26,11 @@ body::-webkit-scrollbar { /* Chrome, Safari, Opera */
 body{
     background: $main-color;
     -ms-overflow-style: none;  /* IE and Edge */
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    -ms-overflow-style: none;
 }
 @-moz-document url-prefix() { 
     body{
