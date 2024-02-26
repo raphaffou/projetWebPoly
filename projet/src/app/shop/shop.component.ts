@@ -37,6 +37,7 @@ export class ShopComponent {
 
     let products:any[] = gsap.utils.toArray(".product");
     let image_width:any = gsap.getProperty("#caroussel", "width", "px");
+    let header_height:any = gsap.getProperty("#header", 'height');
 
     gsap.to("#caroussel", {
       xPercent: -120,
@@ -44,13 +45,14 @@ export class ShopComponent {
       ease: "none",
       scrollTrigger: {
         trigger: "#caroussel",
-        start: () => `top-=${gsap.getProperty("#header", 'height')} top`,
-        end: () => image_width*(products.length-1)/products.length,
+        start: () => `top-=${header_height} top`,
+        end: () =>  image_width*(products.length-1)/products.length - 3*header_height,
         scrub: 1,
         pin: true,
         snap: image_width / (products.length - 1),
         invalidateOnRefresh: true,
-        anticipatePin: 0
+        anticipatePin: 0,
+        markers : true
       }
     });
 
@@ -62,14 +64,15 @@ export class ShopComponent {
 
       ScrollTrigger.create({
         trigger: section,
-        start: () => `top+=${gsap.getProperty(section, 'y')}/4 bottom-=100`, //${gsap.getProperty(section, 'y')}/4
-        end: () => `+=${section.clientHeight}`,
+        start: () => "top center",  //`top+=${gsap.getProperty(section, 'y')}/4 bottom-=100`, //${gsap.getProperty(section, 'y')}/4
+        end: () => "bottom center", //`+=${section.clientHeight}`,
         onEnter: () => {
           gsap.to(section, {y: 0, opacity: 1});
         },
         onLeaveBack: () => {
-          gsap.to(section, {y: 30, opacity: 0});
+          gsap.to(section, {y: 50, opacity: 0});
         },
+        markers: true,
         invalidateOnRefresh: true
       })});
 
