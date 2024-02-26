@@ -36,3 +36,21 @@
     cursor: pointer;
 }
 
+#cart-items-quantity-wrapper{
+    border-radius: 100%;
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    background-color: crimson;
+    right: 15px;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cart-items-quantity{
+    color: whitesmoke;
+    font-weight: bolder;
+    font-size: x-small;
+}
