@@ -13,7 +13,6 @@ npm version : 10.1.0
 `npm install three`  
 `npm i --save-dev @types/three`  
 `npm install three-stdlib`  
-`npm i @spline/loader`  
 
 - Backend : 
       - `npm install express typescript ts-node @types/node @types/express --save-dev`
