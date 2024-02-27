@@ -25,6 +25,5 @@ export class ProductPageComponent implements OnInit {
 
   addToCart() {
     this.cartService.addToCart(this.product);
-    console.log('Your product has been added to the cart!');
   }
 }
