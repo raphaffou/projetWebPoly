@@ -26,7 +26,6 @@ export class CartComponent {
     return array;
   }
 
-
   openPage(product: any) {
     this.router.navigate(['/product-page', product.key]);
   }

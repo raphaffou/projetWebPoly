@@ -34,8 +34,10 @@ export class CartService {
     this.items.set(product.id, count+added); // max five items of the same product in cart
     this.itemCount.update(value => value+added);
     this.totalAmount += product.price * added;
-    alert(quantity.toLocaleString("en")+" "+product.name+" added to cart");
-
+    if(added>0)
+      alert(numberToName(added)+" "+product.name+" was added to your cart.");  // maybe add a continue shopping and to cart thing
+    else
+      alert("You can't add more than 5 of the same item to your cart.");
     this.updateSessionStorage();
   }
 
@@ -99,5 +101,17 @@ export class CartService {
       itemCount: this.itemCount(),
       totalAmount: this.totalAmount
     }));
+  }
+}
+
+
+function numberToName(num: number): string {
+  switch(num) {
+    case 1: return 'One';
+    case 2: return 'Two';
+    case 3: return 'Three';
+    case 4: return 'Four';
+    case 5: return 'Five';
+    default: return 'number out of range';
   }
 }
