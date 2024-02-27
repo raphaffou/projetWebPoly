@@ -25,7 +25,7 @@
           Add to cart
         </button>
 
-        <div class="quantity-details select">
+        <div class="quantity-details-select">
             <span id="chevron"><chevron-down></chevron-down></span>
             <select #itemQuantity (change)="setQuantity(itemQuantity.value)" id="item-quantity">
               <option *ngFor="let i of getQuantityArray()" value="{{ i }}" [attr.selected]="quantity == i ? true : null">{{ i }}</option>

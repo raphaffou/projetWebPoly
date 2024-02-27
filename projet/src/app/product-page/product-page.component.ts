@@ -26,7 +26,6 @@ export class ProductPageComponent implements OnInit {
   }
 
   addToCart() {
-    alert(this.quantity.toLocaleString("en")+" "+this.product.name+" added to cart");
     this.cartService.addToCart(this.product, this.quantity);
   }
 

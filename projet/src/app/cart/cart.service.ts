@@ -45,7 +45,7 @@ export class CartService {
     let product = this.productService.getProductById(productId);
     let count = this.items.get(productId);
 
-    // FIXME: if count undefined -> delete entry from items?
+    // FIXME: if count undefined -> delete entry from items?  | Mathieu : I think yes, the entry may not have been deleted properly for some reasons, it's more robust
     this.items.delete(productId);
     this.itemCount.update(value => count ? value-count : value);
     this.totalAmount -= count && product?.price ? count * product?.price : 0;
@@ -54,7 +54,7 @@ export class CartService {
   }
 
   setItemQuantity(productId: number, quantity: number|string) {
-    // FIXME: only allow numbers
+    // FIXME: only allow numbers  | Mathieu : you can"t, #itemQuantity is a string but is always a Number string so it's ok
     let quantityNew: number;
     if (typeof quantity == 'string')
       quantityNew = Number(quantity);

@@ -15,6 +15,7 @@
 
       <div class="item-details">
         <span class="title" (click)="openPage(item)">{{ productService.getProductName(item.key) }}</span>
+        <!-- FIXME: description doesn't fit -->
         <p class="description">{{ productService.getProductDescription(item.key) }}</p>
 
         <div class="quantity-details">
