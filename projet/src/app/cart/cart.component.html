@@ -35,15 +35,15 @@
     <div class="title-1">Order</div>
     <div id="subtotal" class="order-details">
       <span class="title">Subtotal</span>
-      <span>{{ cartService.getTotalAmount() | currency }}</span>
+      <span>{{ cartService.getTotalAmount() | currency: 'EUR' : 'symbol' : '0.2-2' : 'fr' }}</span>
     </div>
     <div id="shipping" class="order-details">
       <span class="title">Shipping</span>
-      <span>...</span>
+      <span>4.99 €</span>
     </div>
     <div id="total" class="order-details">
       <span class="title">Total</span>
-      <span>...</span>
+      <span> </span>
     </div>
   </div>
 

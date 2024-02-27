@@ -53,9 +53,9 @@
   </div>
 
   <div class="products">
-    <div *ngFor="let product of products" class="product" (click)="openPage(product)">
+    <div *ngFor="let product of products" class="product">
       
-      <div class="show">
+      <div class="show" (click)="openPage(product)">
         <img [src]="product.image" alt="Image" width="200" height="200" loading="lazy" fetchpriority="low">
 
         <h3>

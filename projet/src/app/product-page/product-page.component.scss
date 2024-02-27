@@ -35,14 +35,48 @@
             margin-top: 20%;
         }
 
-        .buy_btn{
+        .buy{
+            display: flex;
+            justify-content: space-between;
             margin-top: 20%;
-            padding-block: 15px;
-            padding-inline: 4em;
-            border: none;
-            background-color: #C894AE;
-            color : white;
-            text-align: center;
+
+            .buy_btn{
+                margin-top: 20%;
+                padding-block: 15px;
+                padding-inline: 4em;
+                border: none;
+                background-color: #C894AE;
+                color : white;
+                text-align: center;
+            }
+
+
+            .quantity-details{
+                margin-bottom: 0px;
+                display: flex;
+            }
+
+            select{
+                appearance: none;
+                font-size: small;
+                padding: 6px 28px 6px 16px;
+                background: none;
+            }
+
+            #chevron{
+                position: absolute;
+                margin-left: 32px;
+            }
+
+            .select{
+                display: flex;
+                align-items: center;
+                max-width: max-content;
+            }
+
+            #item-quantity{
+                z-index: 1000;
+            }
         }
 
     }

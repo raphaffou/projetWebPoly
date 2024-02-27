@@ -51,8 +51,7 @@ export class ShopComponent {
         pin: true,
         snap: images_width / (products.length-1),
         invalidateOnRefresh: true,
-        anticipatePin: 1,
-        markers : true
+        anticipatePin: 1
       }
     });
 
@@ -72,8 +71,7 @@ export class ShopComponent {
         onLeaveBack: () => {
           gsap.to(section, {y: 50, opacity: 0});
         },
-        invalidateOnRefresh: true,
-        markers: true
+        invalidateOnRefresh: true
       })});
 
   }

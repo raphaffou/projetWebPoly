@@ -28,19 +28,12 @@ export class CartService {
     }
   }
 
-  addToCart(product: Product) {
-    let count = this.items.get(product.id);
-    if (! count)
-      this.items.set(product.id, 1);
-    else {
-      // max five items of the same product in cart
-      if (count == 5)
-        return;
-      this.items.set(product.id, count+1);
-    }
-
-    this.itemCount.update(value => value + 1);
-    this.totalAmount += product.price;
+  addToCart(product: Product, quantity: number = 1) {
+    let count = this.items.get(product.id) || 0;
+    this.items.set(product.id, Math.max(count+quantity, 5)); // max five items of the same product in cart
+    this.itemCount.update(value => value = Math.max(value + quantity, 5));
+    this.totalAmount += product.price * (count+quantity > 5 ? 0 : quantity);
+    alert(quantity.toLocaleString("en")+" "+product.name+" added to cart");
 
     this.updateSessionStorage();
   }
