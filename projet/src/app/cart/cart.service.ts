@@ -30,9 +30,10 @@ export class CartService {
 
   addToCart(product: Product, quantity: number = 1) {
     let count = this.items.get(product.id) || 0;
-    this.items.set(product.id, Math.max(count+quantity, 5)); // max five items of the same product in cart
-    this.itemCount.update(value => value = Math.max(value + quantity, 5));
-    this.totalAmount += product.price * (count+quantity > 5 ? 0 : quantity);
+    let added = Math.min(count+quantity, 5) - count;
+    this.items.set(product.id, count+added); // max five items of the same product in cart
+    this.itemCount.update(value => value+added);
+    this.totalAmount += product.price * added;
     alert(quantity.toLocaleString("en")+" "+product.name+" added to cart");
 
     this.updateSessionStorage();

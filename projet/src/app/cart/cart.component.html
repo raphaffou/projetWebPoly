@@ -11,10 +11,10 @@
 
     <div class="cart-item" *ngFor="let item of getItems() | keyvalue">
       <!-- FIXME: product details display in case image isn't displayed properly -->
-      <img id="product-img" src="{{ productService.getProductImagePath(item.key) }}" alt="{{ productService.getProductName(item.key) }}">
+      <img id="product-img" (click)="openPage(item)" src="{{ productService.getProductImagePath(item.key) }}" alt="{{ productService.getProductName(item.key) }}">
 
       <div class="item-details">
-        <span class="title">{{ productService.getProductName(item.key) }}</span>
+        <span class="title" (click)="openPage(item)">{{ productService.getProductName(item.key) }}</span>
         <p class="description">{{ productService.getProductDescription(item.key) }}</p>
 
         <div class="quantity-details">
