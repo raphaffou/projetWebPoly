@@ -20,13 +20,13 @@ npm version : 10.1.0
 
 
 Front TODO :
-- [ ] Story Page
+<!-- - [ ] Reduce LOAD DELAY ! -->
 - [ ] Login Page
 - [ ] Animation plays once at load ???
 - [ ] Make the filters work in shop
-<!-- - [ ] Reduce LOAD DELAY ! -->
-- [ ] Beautify
 - [ ] Mobile version (<img ngSrc="cat.jpg" width="400" height="200" sizes="(max-width: 768px) 100vw, 50vw">)
+- [x] Beautify
+- [x] Story Page (Reproduction de https://stage-helias.myshopify.com/pages/about)
 - [x] Beautify Product page
 - [x] Add UX for Cart + make multiple quantity work on product page
 - [x] Shop pages perf 
