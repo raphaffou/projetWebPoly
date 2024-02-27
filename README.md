@@ -27,6 +27,8 @@ Front TODO :
 <!-- - [ ] Reduce LOAD DELAY ! -->
 - [ ] Beautify
 - [ ] Mobile version (<img ngSrc="cat.jpg" width="400" height="200" sizes="(max-width: 768px) 100vw, 50vw">)
+- [x] Beautify Product page
+- [x] Add UX for Cart + make multiple quantity work on product page
 - [x] Shop pages perf 
 - [x] Font work
 - [x] Cart Page
