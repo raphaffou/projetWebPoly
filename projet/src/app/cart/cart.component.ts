@@ -7,8 +7,6 @@ import { ChevronDownComponent } from '../../assets/chevron-down/chevron-down.com
 
 @Component({
   selector: 'cart',
-  standalone: true,
-  imports: [HeaderComponent, CommonModule, ChevronDownComponent],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })

@@ -11,8 +11,7 @@ import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'hero',
-  standalone: true,
-  imports: [CommonModule, HeaderComponent, NgOptimizedImage],
+  standalone: false,
   templateUrl: './hero-anim.component.html',
   styleUrl: './hero-anim.component.scss'
 })

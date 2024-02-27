@@ -5,8 +5,7 @@ import { CartService } from '../cart/cart.service';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
-  imports: [RouterLink, CommonModule],
+  standalone: false,
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
