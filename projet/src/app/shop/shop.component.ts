@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
 import { Router } from '@angular/router';
+import { categories } from '../categories';
 import { products } from '../products';
 import { CartService } from '../cart/cart.service';
 
@@ -19,8 +20,12 @@ export class ShopComponent {
   //https://codepen.io/sunshinetainted/pen/vYeGVNd
   //https://codepen.io/NewbieRuby/pen/rNYejNb
 
+  categories = categories;
   products = products;
   filteredProducts = products;
+  selectedCategory = categories.All;
+  selectedPrice = 'all';
+
 
   constructor(private router: Router, private cartService: CartService) { }
 
@@ -32,11 +37,8 @@ export class ShopComponent {
     this.cartService.addToCart(product);
   }
 
-  selectedCategory = 'all';
-  selectedPrice = 'all';
-
   onCategoryChange(category: string) {
-    this.selectedCategory = category;
+    this.selectedCategory = categories[category as keyof typeof categories];
     this.filterProducts();
   }
 
@@ -47,7 +49,7 @@ export class ShopComponent {
 
   filterProducts() {
     this.filteredProducts = this.products.filter(product => {
-      let isCategoryMatch = this.selectedCategory === 'all' || product.category === this.selectedCategory;
+      let isCategoryMatch = this.selectedCategory === categories.All || product.category.includes(this.selectedCategory);
       let isPriceMatch = this.selectedPrice === 'all' || this.isPriceInRange(product.price, this.selectedPrice);
       return isCategoryMatch && isPriceMatch;
     });

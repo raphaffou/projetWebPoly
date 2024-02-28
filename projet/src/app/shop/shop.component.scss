@@ -55,7 +55,8 @@ $gap : 40px;
     align-items: center;
     gap: 20px;
     background-color: #FDF7EC; // OR lighter ?
-
+    min-height: 75vh;
+    
     .filters{
         display: flex;
         justify-content: center;
@@ -118,6 +119,17 @@ $gap : 40px;
         grid-template-columns: repeat(3,1fr);
         overflow: hidden;
         //margin-bottom: 50px;
+
+        .not-found{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 50vh;
+            font-size: 2em;
+            color: #bfbfbf;
+            user-select: none;
+        }
 
         .product{
             display: flex;

@@ -22,7 +22,9 @@ npm version : 10.1.0
 Front TODO :
 <!-- - [ ] Reduce LOAD DELAY ! -->
 <!-- - [ ] Login Page -->
+- [ ] More products
 - [ ] Mobile version (<img ngSrc="cat.jpg" width="400" height="200" sizes="(max-width: 768px) 100vw, 50vw">)
+- [x] Better product images
 - [x] Make the filters work in shop
 - [x] Animation plays once at load ???
 - [x] Beautify
