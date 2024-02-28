@@ -65,7 +65,7 @@
 
       <div class="buy">
         <p> {{ product.price | currency: 'EUR' : 'symbol' : '0.2-2' : 'fr' }} </p>
-        <img title="Add to Cart" (click)="addtoCart(product)" src="../../assets/icons/cart.svg" alt="cart" width="30" height="30">
+        <button title="Add to Cart" (click)="addtoCart(product)">Add To Cart</button>
       </div>
 
     </div>

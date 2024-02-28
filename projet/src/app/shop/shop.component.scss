@@ -143,14 +143,34 @@ $gap : 40px;
                 &:hover{
                     cursor: pointer;
                 }
+
+                h3{
+                    padding: 9px;
+                    margin-bottom: 4px;
+
+                    a{
+                        text-transform: none;
+                        font-weight: 500;
+                    }
+                }
             }
 
             .buy{
                 display: flex;
                 align-items: center;
+                flex-direction: column;
                 gap: calc($gap / 2);
 
-                img:hover{
+                button{
+                    padding-block: 13px;
+                    padding-inline: 2.5em;
+                    border: none;
+                    background-color: #C894AE;
+                    color : white;
+                    text-align: center;
+                }
+
+                button:hover{
                     cursor: pointer;
                 }
             }

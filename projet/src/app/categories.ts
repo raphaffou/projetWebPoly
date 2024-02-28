@@ -9,6 +9,5 @@ export enum categories {
     Shampoo = 'Shampoo',
     Conditioner = 'Conditioner',
     Soap = 'Soap',
-    Hairs = 'Hairs',
-    ZZ = 'ZZ'
+    Hairs = 'Hairs'
 }
