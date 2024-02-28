@@ -22,9 +22,9 @@ npm version : 10.1.0
 Front TODO :
 <!-- - [ ] Reduce LOAD DELAY ! -->
 - [ ] Login Page
-- [ ] Animation plays once at load ???
 - [ ] Make the filters work in shop
 - [ ] Mobile version (<img ngSrc="cat.jpg" width="400" height="200" sizes="(max-width: 768px) 100vw, 50vw">)
+- [x] Animation plays once at load ???
 - [x] Beautify
 - [x] Story Page (Reproduction de https://stage-helias.myshopify.com/pages/about)
 - [x] Beautify Product page

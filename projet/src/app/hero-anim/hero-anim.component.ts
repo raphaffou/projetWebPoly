@@ -86,6 +86,7 @@ export class HeroComponent implements OnInit {
       function (gltf: any) {
         model = gltf.scene;
         animate();
+        ran = true;
         gltf.scene.rotation.y = Math.PI / 2;
         gltf.scene.scale.set(10, 10, 10);
         gltf.scene.position.set(0, -.15, 0);
@@ -150,6 +151,7 @@ export class HeroComponent implements OnInit {
 
     mouse.set(-1000, -1000); // init out of canvas to avoid raycaster bug
     zoom = false;
+    var ran = false;
 
     async function animate() {
       target.x = mouse.x * 0.001;
@@ -164,17 +166,18 @@ export class HeroComponent implements OnInit {
         zoom = intersects.length > 0;
       }
 
-      if (zoom) {
+      if(ran && zoom) {
         gsap.timeline({ defaults: { duration: 1.5, ease: "expo.out" } })
           .to(model.rotation, { duration: .75, x: -Math.PI / 16, y: Math.PI / 2 - Math.PI / 24, z: 0 })
           .to(model.scale, { duration: .75, x: 20, y: 20, z: 20 });
       }
-      if (!zoom) {
+      if(!zoom) {
         gsap.timeline({ defaults: { duration: 1.5, ease: "expo.out" } })
           .to(model.rotation, { duration: .75, x: 0, y: Math.PI / 2, z: 0 })
           .to(model.scale, { duration: .75, x: 10, y: 10, z: 10 });
       }
-
+      
+      //ran = true;
       // controls.update();
       // stats.update();
       renderer.render(scene, camera);
