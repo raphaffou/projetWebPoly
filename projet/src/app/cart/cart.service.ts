@@ -95,6 +95,12 @@ export class CartService {
     return this.totalAmount;
   }
 
+  getProductTotalAmount(productId: number) {
+    let price = this.productService.getProductPrice(productId);
+    let quantity = this.items.get(productId);
+    return  price && quantity ? price * quantity : 0;
+  }
+
   private updateSessionStorage() {
     sessionStorage.setItem(this.storageKey, JSON.stringify({
       items: JSON.stringify(Array.from(this.items.entries())),

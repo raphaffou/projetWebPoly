@@ -72,10 +72,17 @@
     text-decoration: underline;
 }
 
-.quantity-details{
+.additional-details{
     margin-bottom: 0px;
     position: absolute;
     bottom: 0;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quantity-details{
     display: flex;
 }
 
