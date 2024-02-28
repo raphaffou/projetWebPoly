@@ -31,6 +31,10 @@ export class ShopComponent {
 
   openPage(product: any) {
     this.router.navigate(['/product-page', product.id]);
+    // const url = this.router.serializeUrl(
+    //   this.router.createUrlTree([`/product-page/${product.id}`])
+    // );
+    // window.open(url, '_blank');
   }
 
   addtoCart(product: any) {

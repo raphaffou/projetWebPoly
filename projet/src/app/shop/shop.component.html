@@ -53,15 +53,15 @@
     <p *ngIf="filteredProducts.length == 0" class="not-found"> No products found </p>
     <div *ngFor="let product of filteredProducts" class="product">
       
-      <div class="show" (click)="openPage(product)">
-        <img [src]="product.image" alt="Image" width="200" height="200" loading="lazy" fetchpriority="low">
+      <a class="show" (click)="openPage(product)" role="link">
+        <img [src]="product.image" alt="Image" width="310" height="310" loading="lazy" fetchpriority="low" role="link">
 
         <h3>
           <a [title]="product.name + ' details'">
             {{ product.name }}
           </a>
         </h3>
-      </div>
+      </a>
 
       <div class="buy">
         <p> {{ product.price | currency: 'EUR' : 'symbol' : '0.2-2' : 'fr' }} </p>
