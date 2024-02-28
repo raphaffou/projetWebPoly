@@ -20,6 +20,7 @@ export class ShopComponent {
   //https://codepen.io/NewbieRuby/pen/rNYejNb
 
   products = products;
+  filteredProducts = products;
 
   constructor(private router: Router, private cartService: CartService) { }
 
@@ -29,6 +30,32 @@ export class ShopComponent {
 
   addtoCart(product: any) {
     this.cartService.addToCart(product);
+  }
+
+  selectedCategory = 'all';
+  selectedPrice = 'all';
+
+  onCategoryChange(category: string) {
+    this.selectedCategory = category;
+    this.filterProducts();
+  }
+
+  onPriceChange(price: string) {
+    this.selectedPrice = price;
+    this.filterProducts();
+  }
+
+  filterProducts() {
+    this.filteredProducts = this.products.filter(product => {
+      let isCategoryMatch = this.selectedCategory === 'all' || product.category === this.selectedCategory;
+      let isPriceMatch = this.selectedPrice === 'all' || this.isPriceInRange(product.price, this.selectedPrice);
+      return isCategoryMatch && isPriceMatch;
+    });
+  }
+  
+  isPriceInRange(price: number, range: string) {
+    let [min, max] = range.split('-').map(Number);
+    return price >= min && price <= max;
   }
 
 
@@ -75,4 +102,5 @@ export class ShopComponent {
       })});
 
   }
+  
 }
