@@ -53,15 +53,14 @@ $gap : 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    background-color: #FDF7EC; // OR lighter ?
+    gap: 10px;
+    background-color: #FDF7EC;
     min-height: 75vh;
     
     .filters{
         display: flex;
         justify-content: center;
-        //align-self: center;
-        gap: 10px;
+        gap: 30px;
         margin-top: 10px;
         margin-bottom: 20px;
         padding-bottom: 8px;
@@ -70,12 +69,13 @@ $gap : 40px;
 
         .filter{
             display: flex;
-            width: 40vh;
-            margin-inline: 10px;
-            padding: 10px;
-            border-radius: 10px;
+            border-radius: 6px;
             cursor: pointer;
             align-items: center;
+            background-color: #C894AE;
+            color: white;
+            text-align: center;
+            padding: .7em;
 
             label{
                 margin-right: 12px;
@@ -83,15 +83,21 @@ $gap : 40px;
 
             select{
                 appearance: none;
-                border: 1px solid #bfbfbf;
-                padding: 9px;
-                border-radius: 8px;
                 
-                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
                 background-repeat: no-repeat;
                 background-position: right 4px center;
                 background-size: 1em;
-                padding-right: 26px;
+
+                color: white;
+                border: none;
+                font-weight: 400;
+                font-size: 16px;
+                background-color: transparent;
+
+                &:hover{
+                    cursor: pointer;
+                }
 
                 &:focus-visible{
                     outline: none;

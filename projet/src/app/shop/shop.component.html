@@ -30,13 +30,13 @@
 <div class="product-list">
   <div class="filters"> 
     <div class="filter">
-      <label for="category">Category</label>
+      <label for="category">Category : </label>
       <select #category id="category" (change)="onCategoryChange(category.value)">
         <option [value]="category.key" *ngFor="let category of categories | keyvalue"> {{category.value}} </option>
       </select>
     </div>
     <div class="filter">
-      <label for="price">Price</label>
+      <label for="price">Price : </label>
       <select #price id="price" (change)="onPriceChange(price.value)">
         <option value="all">All</option>
         <option value="0-10">0-10€</option>
