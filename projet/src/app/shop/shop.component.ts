@@ -53,7 +53,7 @@ export class ShopComponent {
 
   filterProducts() {
     this.filteredProducts = this.products.filter(product => {
-      let isCategoryMatch = this.selectedCategory === categories.All || product.category.includes(this.selectedCategory);
+      let isCategoryMatch = this.selectedCategory === categories.All || product.categories!.includes(this.selectedCategory);
       let isPriceMatch = this.selectedPrice === 'all' || this.isPriceInRange(product.price, this.selectedPrice);
       return isCategoryMatch && isPriceMatch;
     });
