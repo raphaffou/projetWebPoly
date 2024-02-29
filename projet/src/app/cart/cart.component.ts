@@ -5,11 +5,12 @@ import { HeaderComponent } from '../header/header.component';
 import { CartService } from './cart.service';
 import { ProductService } from '../product.service';
 import { ChevronDownComponent } from '../../assets/chevron-down/chevron-down.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'cart',
   standalone: true,
-  imports: [HeaderComponent, CommonModule, ChevronDownComponent],
+  imports: [HeaderComponent, CommonModule, ChevronDownComponent, RouterLink],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })

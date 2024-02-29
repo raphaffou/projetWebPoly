@@ -1,6 +1,5 @@
 import { Injectable, WritableSignal, signal } from '@angular/core';
 import { Product } from '../products';
-import { producerNotifyConsumers } from '@angular/core/primitives/signals';
 import { ProductService } from '../product.service';
 
 @Injectable({
@@ -99,6 +98,10 @@ export class CartService {
     let price = this.productService.getProductPrice(productId);
     let quantity = this.items.get(productId);
     return  price && quantity ? price * quantity : 0;
+  }
+
+  isEmpty() {
+    return this.itemCount() == 0;
   }
 
   private updateSessionStorage() {
