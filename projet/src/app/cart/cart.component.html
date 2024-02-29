@@ -3,7 +3,7 @@
 <div *ngIf="cartService.isEmpty(); else cartItems" id="empty-cart-container">
   <div id="empty-cart-contents">
     <img alt="empty-cart" id="empty-cart-img" src="../../assets/elements/shopping-cart.png">
-    <p>
+    <p id="empty-cart-text">
       Your cart is empty.<br>
       Browse<a routerLink="/shop" id="shop-link">here</a>for products.
     </p>
