@@ -4,6 +4,7 @@ import { HeaderComponent } from '../header/header.component';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
+import SplitType from 'split-type';
 import { Router } from '@angular/router';
 import { categories } from '../categories';
 import { products } from '../products';
@@ -54,7 +55,7 @@ export class ShopComponent {
   filterProducts() {
     this.filteredProducts = this.products.filter(product => {
       let isCategoryMatch = this.selectedCategory === categories.All || product.categories!.includes(this.selectedCategory);
-      let isPriceMatch = this.selectedPrice === 'all' || this.isPriceInRange(product.price, this.selectedPrice);
+      let isPriceMatch = this.selectedPrice === 'all' || this.isPriceInRange(product.price!, this.selectedPrice);
       return isCategoryMatch && isPriceMatch;
     });
   }
@@ -68,12 +69,17 @@ export class ShopComponent {
   ngOnInit() {
     gsap.registerPlugin(ScrollTrigger);
 
+    let pinSpacerElement = document.querySelector('.pin-spacer');
+    console.debug(pinSpacerElement);
+
     let products:any[] = gsap.utils.toArray(".product");
     let images_width:any = gsap.getProperty("#caroussel", "width", "px");
+    let scroller_width:any = gsap.getProperty("body", "width");
+    let scroller_height:any = gsap.getProperty("body", "height");
     let header_height:any = gsap.getProperty("#header", 'height');
 
     gsap.to("#caroussel", {
-      xPercent: -165,
+      xPercent: -145*scroller_height/scroller_width,
       x : 0,
       ease: "none",
       scrollTrigger: {
@@ -84,29 +90,33 @@ export class ShopComponent {
         pin: true,
         snap: images_width / (products.length-1),
         invalidateOnRefresh: true,
-        anticipatePin: 1
+        anticipatePin: 1,
       }
     });
 
 
-    const text_sections = gsap.utils.toArray('.text');
+    const textSections = gsap.utils.toArray('.text');
 
-    text_sections.forEach((section:any) => {
-      gsap.set(section, { y: 30, opacity: 0});
+    // https://gsap-text-animator.webflow.io/
+    textSections.forEach((section:any) => {
+      let typeSplit = new SplitType(section, {
+        types: 'lines,words,chars',
+        tagName: 'span'
+      });
 
-      ScrollTrigger.create({
-        trigger: section,
-        start: () => "top center", //`top+=${gsap.getProperty(section, 'y')}/4 bottom-=100`,
-        end: () => "center center",
-        onEnter: () => {
-          gsap.to(section, {y: 0, opacity: 1});
-        },
-        onLeaveBack: () => {
-          gsap.to(section, {y: 50, opacity: 0});
-        },
-        invalidateOnRefresh: true
-      })});
-
+      gsap.from(typeSplit.chars, {
+        opacity: 0.3,
+        duration: 0.1,
+        ease: 'power1.out',
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: section,
+          start: 'top center',
+          end: 'bottom center',
+          scrub: true,
+        }
+      });
+    });
   }
   
 }

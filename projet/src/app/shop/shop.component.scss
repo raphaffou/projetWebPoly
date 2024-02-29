@@ -23,26 +23,39 @@ $gap : 40px;
             width: 450px;
             object-fit : cover;
             border-radius: 32px;
+
+            @media (max-width: 768px){
+                height: 400px;
+                width: 350px;
+                
+            }
         }
     }
 }
 
-.text{
+.text-wrapper{
     //position: relative;
     //top: -400px;
     display :flex;
     justify-content : center;
     align-items: center;
     text-align: center;
-    flex-direction: column;
-    padding-inline: 3em;
     width: 100vw;
-    gap: $gap;
-    margin-bottom: 40vh;
+    padding-bottom: 45vh;
 
-    p{
-        width: 50vw;
-        text-transform: uppercase;
+    .text{
+        display: flex;
+        flex-direction: column;
+        padding: 4em;
+        box-shadow: 0 0 13px 1px #CCC;
+        background-color: white;
+        gap: $gap;
+
+        p{
+            width: 50vw;
+            font-size: larger;
+            font-weight: 400;
+        }
     }
 
     transition: transform 500ms cubic-bezier(0,0,0.5,1),opacity 500ms cubic-bezier(0,0,0.5,1);
@@ -54,8 +67,11 @@ $gap : 40px;
     flex-direction: column;
     align-items: center;
     gap: 10px;
-    background-color: #FDF7EC;
+    padding-top: 5vh;
     min-height: 75vh;
+    width: 90%;
+    margin-inline: 5%;
+    background-color: rgba(255,255,255,.6);
     
     .filters{
         display: flex;
@@ -104,14 +120,17 @@ $gap : 40px;
                     outline: none;
                 }
                 
-                &:active{
-                    //TODO : background-position : rotate (90)
-                    // transition
-                }
+                // Dpesn't work well 
+                // &:focus{
+                //     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 15 12 9 18 15'%3e%3c/polyline%3e%3c/svg%3e");
+                //     transition: background-image 0.5s ease-in-out;
+                // }
 
                 option{
                     padding: 15px;
                     border-radius: 0;
+                    color: black;
+                    background-color: white;
                 }
             }
 
@@ -119,13 +138,20 @@ $gap : 40px;
     }
 
     .products{
-        width : 90%;
         display : grid;
         gap: calc($gap * 2);
         justify-content: center;
         grid-template-columns: repeat(3,1fr);
         overflow: hidden;
         margin-bottom: 3.5%;
+
+        @media (max-width: 1216px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    
+        @media (max-width: 768px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
 
         .not-found{
             display: flex;
@@ -156,7 +182,6 @@ $gap : 40px;
                     margin-bottom: 4px;
 
                     a{
-                        text-transform: none;
                         font-weight: 500;
                     }
                 }
