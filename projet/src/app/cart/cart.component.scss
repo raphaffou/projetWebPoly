@@ -1,4 +1,5 @@
 #cart{
+    // FIXME: padding on smaller screens
     margin-top: 65px;
     padding: 32px 256px;
     display: flex;
@@ -13,7 +14,6 @@
 
 #cart-items{
     width: 50%;
-    min-width: fit-content;
 }
 
 #order{
@@ -37,17 +37,22 @@
 }
 
 #product-img{
-    width: 128px;
+    width: 148px;
 }
 
 .cart-item{
     display: flex;
-    margin-top: 24px;
+    margin-top: 32px;
+    align-items: flex-start;
 }
 
 .item-details{
     margin-left: 24px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto;
 }
 
 .description{
@@ -73,13 +78,11 @@
 }
 
 .additional-details{
-    margin-bottom: 0px;
-    position: absolute;
-    bottom: 0;
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-between;
+    margin-top: 12px;
 }
 
 .quantity-details{
@@ -164,5 +167,4 @@ select{
 p{
     line-height: 24px;
     margin-top: 48px;
-    text-align: center;
 }
