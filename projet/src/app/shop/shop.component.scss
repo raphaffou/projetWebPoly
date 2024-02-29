@@ -1,14 +1,18 @@
 $image-width : 450px;
+$gap : 40px;
+
 
 #caroussel{
+    //position: relative;
     display: flex;
     flex-wrap: nowrap;
     height: 100%;
-    width: calc(4*$image-width);
+    width: 100%;
+    //width: calc(4*$image-width);
     overscroll-behavior: none;
     padding-top: 12vh;
+    padding-bottom: 0;
     cursor: crosshair;
-
     transform: translateX(calc(0.8*$image-width));
 
     .product-showcase{
@@ -24,11 +28,22 @@ $image-width : 450px;
 }
 
 .text{
+    //position: relative;
+    //top: -400px;
+    display :flex;
+    justify-content : center;
+    align-items: center;
     text-align: center;
+    flex-direction: column;
     padding-inline: 3em;
     width: 100vw;
-    margin-bottom: 150px;
-    text-transform: uppercase;
+    gap: $gap;
+    margin-bottom: 40vh;
+
+    p{
+        width: 50vw;
+        text-transform: uppercase;
+    }
 
     transition: transform 500ms cubic-bezier(0,0,0.5,1),opacity 500ms cubic-bezier(0,0,0.5,1);
 }
@@ -38,13 +53,14 @@ $image-width : 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    background-color: #FDF7EC; // OR lighter ?
-
+    gap: 10px;
+    background-color: #FDF7EC;
+    min-height: 75vh;
+    
     .filters{
         display: flex;
         justify-content: center;
-        gap: 10px;
+        gap: 30px;
         margin-top: 10px;
         margin-bottom: 20px;
         padding-bottom: 8px;
@@ -53,31 +69,44 @@ $image-width : 450px;
 
         .filter{
             display: flex;
-            width: 40vh;
-            margin-inline: 10px;
-            padding: 10px;
-            border-radius: 10px;
+            border-radius: 6px;
             cursor: pointer;
             align-items: center;
+            background-color: #C894AE;
+            color: white;
+            text-align: center;
+            padding: .7em;
 
             label{
                 margin-right: 12px;
             }
 
             select{
-                border: 1px solid #bfbfbf;
-                padding: 8px;
-                border-radius: 8px;
                 appearance: none;
-                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+                
+                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
                 background-repeat: no-repeat;
                 background-position: right 4px center;
                 background-size: 1em;
-                padding-right: 26px;
 
+                color: white;
+                border: none;
+                font-weight: 400;
+                font-size: 16px;
+                background-color: transparent;
+                padding-right: 24px;
+
+                &:hover{
+                    cursor: pointer;
+                }
 
                 &:focus-visible{
                     outline: none;
+                }
+                
+                &:active{
+                    //TODO : background-position : rotate (90)
+                    // transition
                 }
 
                 option{
@@ -92,14 +121,22 @@ $image-width : 450px;
     .products{
         width : 90%;
         display : grid;
-        gap: 20px;
+        gap: calc($gap * 2);
         justify-content: center;
         grid-template-columns: repeat(3,1fr);
         overflow: hidden;
-        margin-bottom: 50px;
-        //grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        //grid : auto-flow / repeat(auto-fill, minmax(300px, 1fr));
+        margin-bottom: 3.5%;
 
+        .not-found{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 50vh;
+            font-size: 2em;
+            color: #bfbfbf;
+            user-select: none;
+        }
 
         .product{
             display: flex;
@@ -113,15 +150,46 @@ $image-width : 450px;
                 &:hover{
                     cursor: pointer;
                 }
+
+                h3{
+                    padding: 9px;
+                    margin-bottom: 4px;
+
+                    a{
+                        text-transform: none;
+                        font-weight: 500;
+                    }
+                }
+
+                img{
+                    border-radius: 4px;
+                    height: 310px;
+                    width: 310px;
+                    object-fit: cover;
+                    user-select: none;
+                    pointer-events: none;
+                }
+
             }
 
             .buy{
                 display: flex;
                 align-items: center;
-                gap: 10px;
+                flex-direction: column;
+                gap: calc($gap / 2);
 
-                img:hover{
+                button{
+                    padding-block: 13px;
+                    padding-inline: 2.5em;
+                    border: none;
+                    background-color: #C894AE;
+                    color : white;
+                    text-align: center;
+                }
+
+                button:hover{
                     cursor: pointer;
+                    background-color: #c894aed7;
                 }
             }
 
@@ -137,14 +205,14 @@ $image-width : 450px;
                 inline-size: 1px;
                 block-size: 110vh;
                 inset-block-start: 0;
-                inset-inline-start: calc(10px * -1);
+                inset-inline-start: calc($gap * -1);
             }
 
             &::after{
                 inline-size: 110vw;
                 block-size: 1px;
                 inset-inline-start: 0;
-                inset-block-start: calc(10px * -1);
+                inset-block-start: calc($gap * -1);
             }
 
         }

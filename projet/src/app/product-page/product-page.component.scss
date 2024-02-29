@@ -15,9 +15,12 @@
         padding: 0;
     }
 
-    .right_col{   
-        padding-left: 5%;
+    .right_col{
+        display: flex;
+        flex-direction: column;
+        padding-left: 1.5%;
         width: 50%;
+        padding-top: 35px;
 
         .title{
             font-size: x-large;
@@ -35,14 +38,56 @@
             margin-top: 20%;
         }
 
-        .buy_btn{
+        .buy{
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            align-content: center;
+            flex-direction: row;
             margin-top: 20%;
-            padding-block: 15px;
-            padding-inline: 4em;
-            border: none;
-            background-color: #C894AE;
-            color : white;
-            text-align: center;
+            gap : 20px;
+
+            .buy_btn{
+                padding-block: 15px;
+                padding-inline: 4em;
+                border: none;
+                background-color: #C894AE;
+                color : white;
+                text-align: center;
+
+                &:hover{
+                    cursor: pointer;
+                    background-color: #c894aed7;
+                }
+            }
+
+            .quantity-details-select{
+                margin-bottom: 0px;
+                display: flex;
+                align-items: center;
+                max-width: max-content;
+
+                #chevron{
+                    position: absolute;
+                    margin-left: 32px;
+                }
+
+                select{
+                    appearance: none;
+                    font-size: small;
+                    padding: 6px 28px 6px 16px;
+                    background: none;
+                    z-index: 1000;
+                    border: 1px solid #C894AE;
+                    color: black;
+
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+
+            }
+
         }
 
     }

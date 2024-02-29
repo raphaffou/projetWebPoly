@@ -3,6 +3,11 @@
     <div class="left-head">
         <a routerLink="/story"><p>Our Story</p></a>
         <a routerLink="/shop" routerLinkActive="active fluffy"><img id="product-img" src="../assets/icons/product.png" alt="cart" width="40px" height="40px" /></a>
-        <a routerLink="/cart"><img id="cart-img" src="../assets/icons/cart.svg" alt="account" width="40px" height="40px"/></a>
+        <a routerLink="/cart">
+            <img id="cart-img" src="../assets/icons/cart.svg" alt="account" width="40px" height="40px"/>
+            <span id="cart-items-quantity-wrapper" *ngIf="!isCartEmpty()">
+                <span id="cart-items-quantity">{{ getCartItemCount() }}</span>
+            </span>
+        </a>
     </div>
 </div>

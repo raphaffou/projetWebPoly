@@ -4,18 +4,20 @@ import { CommonModule } from '@angular/common';
 import { products } from '../products';
 import { HeaderComponent } from '../header/header.component';
 import { CartService } from '../cart/cart.service';
+import { ChevronDownComponent } from '../../assets/chevron-down/chevron-down.component';
 
 @Component({
   selector: 'app-product-page',
   standalone: true,
-  imports: [CommonModule, HeaderComponent],
+  imports: [CommonModule, HeaderComponent, ChevronDownComponent],
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.scss']
 })
 export class ProductPageComponent implements OnInit {
   product: any;
+  quantity: number = 1;
 
-  constructor(private route: ActivatedRoute, private cartService: CartService) { }
+  constructor(private route: ActivatedRoute, public cartService: CartService) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -24,7 +26,20 @@ export class ProductPageComponent implements OnInit {
   }
 
   addToCart() {
-    this.cartService.addToCart(this.product);
-    console.log('Your product has been added to the cart!');
+    this.cartService.addToCart(this.product, this.quantity);
   }
+
+  getItems() {
+    return this.cartService.getItems();
+  }
+
+  getQuantityArray() {
+    const array = [1, 2, 3, 4, 5];
+    return array;
+  }
+
+  setQuantity(quantity: number|string) {
+    this.quantity = Number(quantity);
+  }
+
 }

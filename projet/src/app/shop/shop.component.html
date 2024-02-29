@@ -15,28 +15,30 @@
   </div>
 </div>
 
-<p class="text">
-  Bienvenue dans une nouvelle ère de produits cosmétiques où l'environnement est le facteur déterminant.
-  Nous vous proposons des produits de qualité, respectueux de l'environnement et de votre peau.
-  Notre gamme de produits est composée d'huiles, de crèmes et de soins pour le visage et les mains.
-</p>
+<div class="text">
+  <p>
+    Bienvenue dans une nouvelle ère de produits cosmétiques où l'environnement est le facteur déterminant.
+    Nous vous proposons des produits de qualité, respectueux de l'environnement et de votre peau.
+    Notre gamme de produits est composée d'huiles, de crèmes et de soins pour le visage et les mains.
+  </p>
+
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo iste sapiente, perferendis doloribus ducimus officia qui sequi, aspernatur, optio necessitatibus perspiciatis autem! Consequuntur voluptates reprehenderit illum molestias error! Eaque, molestiae.
+  </p>
+</div>
 
 <div class="product-list">
   <div class="filters"> 
     <div class="filter">
-      <label for="category">Catégorie</label>
-      <select id="category">
-        <option value="all">Tous</option>
-        <option value="oil">Huiles</option>
-        <option value="cream">Crèmes</option>
-        <option value="skincare">Soins du visage</option>
-        <option value="hand">Soins des mains</option>
+      <label for="category">Category : </label>
+      <select #category id="category" (change)="onCategoryChange(category.value)">
+        <option [value]="category.key" *ngFor="let category of categories | keyvalue"> {{category.value}} </option>
       </select>
     </div>
     <div class="filter">
-      <label for="price">Prix</label>
-      <select id="price">
-        <option value="all">Tous</option>
+      <label for="price">Price : </label>
+      <select #price id="price" (change)="onPriceChange(price.value)">
+        <option value="all">All</option>
         <option value="0-10">0-10€</option>
         <option value="10-20">10-20€</option>
         <option value="20-30">20-30€</option>
@@ -46,22 +48,24 @@
     </div>
   </div>
 
+
   <div class="products">
-    <div *ngFor="let product of products" class="product" (click)="openPage(product)">
+    <p *ngIf="filteredProducts.length == 0" class="not-found"> No products found </p>
+    <div *ngFor="let product of filteredProducts" class="product">
       
-      <div class="show">
-        <img [src]="product.image" alt="Image" width="200" height="200" loading="lazy" fetchpriority="low">
+      <a class="show" (click)="openPage(product)" role="link">
+        <img [src]="product.image" alt="Image" width="310" height="310" loading="lazy" fetchpriority="low" role="link">
 
         <h3>
           <a [title]="product.name + ' details'">
             {{ product.name }}
           </a>
         </h3>
-      </div>
+      </a>
 
       <div class="buy">
-        <p> {{ product.price | currency }} </p>
-        <img title="Add to Cart" (click)="addtoCart(product)" src="../../assets/icons/cart.svg" alt="cart" width="30" height="30">
+        <p> {{ product.price | currency: 'EUR' : 'symbol' : '0.2-2' : 'fr' }} </p>
+        <button title="Add to Cart" (click)="addtoCart(product)">Add To Cart</button>
       </div>
 
     </div>

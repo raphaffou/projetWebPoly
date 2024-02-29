@@ -5,6 +5,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
 import { Router } from '@angular/router';
+import { categories } from '../categories';
 import { products } from '../products';
 import { CartService } from '../cart/cart.service';
 
@@ -19,16 +20,48 @@ export class ShopComponent {
   //https://codepen.io/sunshinetainted/pen/vYeGVNd
   //https://codepen.io/NewbieRuby/pen/rNYejNb
 
+  categories = categories;
   products = products;
+  filteredProducts = products;
+  selectedCategory = categories.All;
+  selectedPrice = 'all';
+
 
   constructor(private router: Router, private cartService: CartService) { }
 
   openPage(product: any) {
     this.router.navigate(['/product-page', product.id]);
+    // const url = this.router.serializeUrl(
+    //   this.router.createUrlTree([`/product-page/${product.id}`])
+    // );
+    // window.open(url, '_blank');
   }
 
   addtoCart(product: any) {
     this.cartService.addToCart(product);
+  }
+
+  onCategoryChange(category: string) {
+    this.selectedCategory = categories[category as keyof typeof categories];
+    this.filterProducts();
+  }
+
+  onPriceChange(price: string) {
+    this.selectedPrice = price;
+    this.filterProducts();
+  }
+
+  filterProducts() {
+    this.filteredProducts = this.products.filter(product => {
+      let isCategoryMatch = this.selectedCategory === categories.All || product.categories!.includes(this.selectedCategory);
+      let isPriceMatch = this.selectedPrice === 'all' || this.isPriceInRange(product.price, this.selectedPrice);
+      return isCategoryMatch && isPriceMatch;
+    });
+  }
+  
+  isPriceInRange(price: number, range: string) {
+    let [min, max] = range.split('-').map(Number);
+    return price >= min && price <= max;
   }
 
 
@@ -36,21 +69,22 @@ export class ShopComponent {
     gsap.registerPlugin(ScrollTrigger);
 
     let products:any[] = gsap.utils.toArray(".product");
-    let image_width:any = gsap.getProperty("#caroussel", "width", "px");
+    let images_width:any = gsap.getProperty("#caroussel", "width", "px");
+    let header_height:any = gsap.getProperty("#header", 'height');
 
     gsap.to("#caroussel", {
-      xPercent: -120,
-      x: image_width*(products.length-1)/products.length,
+      xPercent: -165,
+      x : 0,
       ease: "none",
       scrollTrigger: {
         trigger: "#caroussel",
-        start: () => `top-=${gsap.getProperty("#header", 'height')} top`,
-        end: () => image_width*(products.length-1)/products.length,
+        start: () => `top-=${header_height} top`,
+        end: () =>  2*images_width/3,
         scrub: 1,
         pin: true,
-        snap: image_width / (products.length - 1),
+        snap: images_width / (products.length-1),
         invalidateOnRefresh: true,
-        anticipatePin: 0
+        anticipatePin: 1
       }
     });
 
@@ -62,16 +96,17 @@ export class ShopComponent {
 
       ScrollTrigger.create({
         trigger: section,
-        start: () => `top+=${gsap.getProperty(section, 'y')}/4 bottom-=100`, //${gsap.getProperty(section, 'y')}/4
-        end: () => `+=${section.clientHeight}`,
+        start: () => "top center", //`top+=${gsap.getProperty(section, 'y')}/4 bottom-=100`,
+        end: () => "center center",
         onEnter: () => {
           gsap.to(section, {y: 0, opacity: 1});
         },
         onLeaveBack: () => {
-          gsap.to(section, {y: 30, opacity: 0});
+          gsap.to(section, {y: 50, opacity: 0});
         },
         invalidateOnRefresh: true
       })});
 
   }
+  
 }
