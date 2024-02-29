@@ -4,5 +4,12 @@
         <a routerLink="/story"><p>Our Story</p></a>
         <a routerLink="/shop" routerLinkActive="active fluffy"><img id="product-img" src="../assets/icons/product.png" alt="cart" width="40px" height="40px" /></a>
         <a routerLink="/cart"><img id="cart-img" src="../assets/icons/cart.svg" alt="account" width="40px" height="40px"/></a>
+        <ng-container *ngIf="isAuthenticated$ | async; else unAuthenticated">
+            <button (click)="handleLogout()">Log out</button>
+        </ng-container>
+        <ng-template #unAuthenticated>
+            <button (click)="handleSignUp()">Sign up</button>
+            <button (click)="handleLogin()">Log in</button>
+        </ng-template>
     </div>
 </div>
