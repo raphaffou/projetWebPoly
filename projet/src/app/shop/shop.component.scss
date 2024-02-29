@@ -47,7 +47,7 @@ $gap : 40px;
         display: flex;
         flex-direction: column;
         padding: 4em;
-        box-shadow: 0 0 13px 1px #CCC;
+        box-shadow: 0 0 13px 1px #EEE;
         background-color: white;
         gap: $gap;
 
@@ -72,6 +72,7 @@ $gap : 40px;
     width: 90%;
     margin-inline: 5%;
     background-color: rgba(255,255,255,.6);
+    box-shadow: 0 0 13px 1px #EEE;
     
     .filters{
         display: flex;

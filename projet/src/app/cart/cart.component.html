@@ -1,56 +1,72 @@
 <app-header></app-header>
 
-<!-- TODO: handle empty cart case -->
-<div id="cart">
-  <div id="cart-items" class="container">
-    <div id="cart-header">
-      <span class="title-1">Cart</span>
-      <!-- TODO: replace with waste basket icon -->
-      <button id="clear-cart" (click)="cartService.clearCart()">Clear cart</button>
-    </div>
+<div *ngIf="cartService.isEmpty(); else cartItems" id="empty-cart-container">
+  <div id="empty-cart-contents">
+    <img alt="empty-cart" id="empty-cart-img" src="../../assets/elements/shopping-cart.png">
+    <p id="empty-cart-text">
+      Your cart is empty.<br>
+      Browse<a routerLink="/shop" id="shop-link">here</a>for products.
+    </p>
+  </div>
+</div>
 
-    <div class="cart-item" *ngFor="let item of getItems() | keyvalue">
-      <!-- FIXME: product details display in case image isn't displayed properly -->
-      <img id="product-img" (click)="openPage(item)" src="{{ productService.getProductImagePath(item.key) }}" alt="{{ productService.getProductName(item.key) }}">
-
-      <div class="item-details">
-        <span class="title" (click)="openPage(item)">{{ productService.getProductName(item.key) }}</span>
-        <!-- FIXME: description doesn't fit -->
-        <p class="description">{{ productService.getProductDescription(item.key) }}</p>
-
-        <div class="quantity-details">
-          <div class="select">
-            <span id="chevron"><chevron-down></chevron-down></span>
-            <select #itemQuantity (change)="cartService.setItemQuantity(item.key, itemQuantity.value)" id="item-quantity">
-              <option *ngFor="let i of getQuantityArray()" value="{{ i }}" [attr.selected]="item.value == i ? true : null">{{ i }}</option>
-            </select>
-          </div>
-          <button class="removeItemButton" (click)="cartService.removeFromCart(item.key)">Remove</button>
-        </div>
+<ng-template #cartItems>
+  <div id="cart">
+    <div id="cart-items" class="container">
+      <div id="cart-header">
+        <span class="title-1">Cart</span>
+        <!-- TODO: replace with waste basket icon -->
+        <button id="clear-cart" (click)="cartService.clearCart()">Clear cart</button>
       </div>
+
+      <div class="cart-item" *ngFor="let item of getItems() | keyvalue">
+        <!-- FIXME: product details display in case image isn't displayed properly -->
+        <img id="product-img" (click)="openPage(item)" src="{{ productService.getProductImagePath(item.key) }}" alt="{{ productService.getProductName(item.key) }}">
+
+        <div class="item-details">
+          <span class="title" (click)="openPage(item)">{{ productService.getProductName(item.key) }}</span>
+          <p class="description">{{ productService.getProductDescription(item.key) }}</p>
+
+          <div class="additional-details">
+            <div class="quantity-details">
+              <div class="select">
+                <span id="chevron"><chevron-down></chevron-down></span>
+                <select #itemQuantity (change)="cartService.setItemQuantity(item.key, itemQuantity.value)" id="item-quantity">
+                  <option *ngFor="let i of getQuantityArray()" value="{{ i }}" [attr.selected]="item.value == i ? true : null">{{ i }}</option>
+                </select>
+              </div>
+              <button class="removeItemButton" (click)="cartService.removeFromCart(item.key)">Remove</button>
+            </div>
+            <span class="pricing-details">{{ cartService.getProductTotalAmount(item.key) | currency: 'EUR' : 'symbol' : '0.2-2' : 'fr' }}</span>
+          </div>
+
+        </div>
 
     </div>
   </div>
 
   <!-- TODO ? add an open map and get the adress from it -->
 
-  <div id="order" class="container">
-    <div class="title-1">Order</div>
-    <div id="subtotal" class="order-details">
-      <span class="title">Subtotal</span>
-      <span>{{ cartService.getTotalAmount() | currency: 'EUR' : 'symbol' : '0.2-2' : 'fr' }}</span>
+    <div id="order" class="container">
+      <div class="title-1">Order</div>
+      <div id="subtotal" class="order-details">
+        <span class="title">Subtotal</span>
+        <span>{{ cartService.getTotalAmount() | currency: 'EUR' : 'symbol' : '0.2-2' : 'fr' }}</span>
+      </div>
+      <div id="shipping" class="order-details">
+        <span class="title">Shipping</span>
+        <span>4.99 €</span>
+      </div>
+      <div id="total" class="order-details">
+        <span class="title">Total</span>
+        <span>...</span>
+      </div>
     </div>
-    <div id="shipping" class="order-details">
-      <span class="title">Shipping</span>
-      <span>4.99 €</span>
-    </div>
-    <div id="total" class="order-details">
-      <span class="title">Total</span>
-      <span> </span>
-    </div>
+
   </div>
+</ng-template>
 
 
   <!-- TODO ? Make order button + send receipt by email (chatgpt for template)-->
-</div>
+
 
