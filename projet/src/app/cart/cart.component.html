@@ -37,7 +37,7 @@
               </div>
               <button class="removeItemButton" (click)="cartService.removeFromCart(item.key)">Remove</button>
             </div>
-            <span class="pricing-details">{{ cartService.getProductTotalAmount(item.key) | currency }}</span>
+            <span class="pricing-details">{{ cartService.getProductTotalAmount(item.key) | currency: 'EUR' : 'symbol' : '0.2-2' : 'fr' }}</span>
           </div>
 
         </div>
