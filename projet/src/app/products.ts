@@ -71,7 +71,7 @@ export const products = [
         name: 'Sunscreen',
         price: 29.99,
         description: 'This is a sunscreen that protects your skin from harmful UV rays. It is made with natural ingredients and is suitable for all skin types. Use it daily for best results.',
-        image: 'assets/products/sunscreen.jpg',
+        image: 'assets/products/sunscreen.jpeg',
         categories: [categories.Face, categories.Body]
     },
     {
@@ -79,7 +79,7 @@ export const products = [
         name: 'Moisturizer',
         price: 39.99,
         description: 'This is a high-quality moisturizer that keeps your skin soft and smooth. It is made with natural ingredients and is suitable for all skin types. Use it daily for best results.',
-        image: 'assets/products/moisturizer.jpg',
+        image: 'assets/products/moisturizer.jpeg',
         categories: [categories.Face, categories.Cream]
     },
     {
@@ -87,7 +87,7 @@ export const products = [
         name: 'Exfoliator',
         price: 19.99,
         description: 'This is an exfoliator that removes dead skin cells and leaves your skin feeling soft and smooth. It is made with natural ingredients and is suitable for all skin types. Use it weekly for best results.',
-        image: 'assets/products/exfoliator.jpg',
+        image: 'assets/products/exfoliator.jpeg',
         categories: [categories.Face, categories.Body]
     },
     {
@@ -95,8 +95,41 @@ export const products = [
         name: 'Serum',
         price: 49.99,
         description: 'This is a high-quality serum that moisturizes your skin and keeps it soft and smooth. It is made with natural ingredients and is suitable for all skin types. Use it daily for best results.',
-        image: 'assets/products/serum.jpg',
+        image: 'assets/products/serum.jpeg',
         categories: [categories.Face, categories.Oil]
+    },
+    {
+        id: 57693784,
+        name: 'Summer Deodorant',
+        price: 14.99,
+        description: 'This is a deodorant that keeps you feeling fresh and clean all day long. It is made with natural ingredients and is suitable for all skin types. Use it daily for best results.',
+        image: 'assets/products/deodorant_summer.jpeg',
+        categories: [categories.Body, categories.Deodorant]
+    },
+    {
+        id: 872364,
+        name: 'Winter Deodorant',
+        price: 14.99,
+        description: 'This is a deodorant that keeps you feeling fresh and clean all day long. It is made with natural ingredients and is suitable for all skin types. Use it daily for best results.',
+        image: 'assets/products/deodorant_winter.jpeg',
+        categories: [categories.Body, categories.Deodorant]
+    },
+    {
+        id: 23820981,
+        name: 'Mister',
+        price: 9.59,
+        description: 'This is a mister that keeps you feeling fresh and clean all day long. It is made with natural ingredients and is suitable for all skin types. Use it daily for best results.',
+        image: 'assets/products/mister.jpeg',
+        categories: [categories.Face]
+    },
+    {
+        id: 129138489,
+        name: 'Exfoliator',
+        price: 19.99,
+        description: 'This is an exfoliator that removes dead skin cells and leaves your skin feeling soft and smooth. It is made with natural ingredients and is suitable for all skin types. Use it weekly for best results.',
+        image: 'assets/products/exfoliator.jpeg',
+        categories: [categories.Face, categories.Body]
     }
+
 
 ];

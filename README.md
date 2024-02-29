@@ -13,6 +13,7 @@ npm version : 10.1.0
 `npm install three`  
 `npm i --save-dev @types/three`  
 `npm install three-stdlib`  
+`npm i split-type`  
 
 - Backend : 
       - `npm install express typescript ts-node @types/node @types/express --save-dev`
@@ -21,9 +22,8 @@ npm version : 10.1.0
 
 Front TODO :
 <!-- - [ ] Reduce LOAD DELAY ! -->
-<!-- - [ ] Login Page -->
-- [ ] More products
-- [ ] Mobile version (<img ngSrc="cat.jpg" width="400" height="200" sizes="(max-width: 768px) 100vw, 50vw">)
+- [x] More products
+Out of scope : Mobile version (<img ngSrc="cat.jpg" width="400" height="200" sizes="(max-width: 768px) 100vw, 50vw">)
 - [x] Better product images
 - [x] Make the filters work in shop
 - [x] Animation plays once at load ???
