@@ -1,1 +1,3 @@
+**/node_modules/
 .angular
+**/api/node_modules/**
