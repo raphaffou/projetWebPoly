@@ -4,6 +4,7 @@ import { RouterLink } from '@angular/router';
 import { CartService } from '../cart/cart.service';
 import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -19,8 +20,19 @@ export class HeaderComponent{
   ngOnInit(): void {
     this.auth.isAuthenticated$.subscribe((isAuthenticated) => {console.log(isAuthenticated, this.auth)});
     this.auth.error$.subscribe((error) => {console.log(error)});
-    this.auth.user$.subscribe((user) => {console.log(user)});
-    this.http.get('http://localhost:4200/api/external').subscribe((data:any) => {console.log(data)});
+    this.auth.user$.subscribe((user) => {console.log(user); console.log(user!.sub)});
+    
+    //check user id
+    this.auth.idTokenClaims$.subscribe((claims) => {console.log(claims)});
+    //call /api/external each 5 seconds
+    // of(0).subscribe(() => {
+    //   setInterval(() => {
+    //     console.log(window.location.origin);
+        
+    //   }, 5000);
+    // }
+    //);
+    
   }
   isCartEmpty() {
     return this.cartService.getItemCount() == 0;
@@ -30,7 +42,12 @@ export class HeaderComponent{
     return this.cartService.getItemCount();
   }
   handleLogin(): void {
-    this.auth.loginWithPopup();
+    this.auth.loginWithPopup().subscribe((user) => {
+      console.log(user);
+      this.http.post(window.location.origin+'/api/justconnected/', {}).subscribe((data) => {
+        console.log(data);
+      });
+    });
   }
   handleSignUp(): void {
     this.auth.loginWithPopup();

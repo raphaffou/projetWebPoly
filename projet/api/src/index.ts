@@ -3,6 +3,7 @@ import mariadb from 'mariadb';
 import authConfig from '../../auth_config.json';
 import helmet from 'helmet';
 import cors from 'cors';
+import { IncomingMessage } from 'http';
 const { auth } = require('express-oauth2-jwt-bearer');
 
 const app = express();
@@ -37,12 +38,6 @@ const checkJwt = auth({
   issuerBaseURL: `https://${authConfig.domain}`,
 });
 
-app.get('/api/external', checkJwt, (req, res) => {
-  res.send({
-    msg: 'Your access token was successfully validated!',
-  });
-});
-
 
 async function asyncFunction() {
     let conn;
@@ -63,13 +58,21 @@ async function asyncFunction() {
 }
 asyncFunction();
 
+app.get('/api/external', checkJwt, (req, res) => {
+  res.send({
+    msg: 'Your access token was successfully validated!',
+  });
+});
 
 app.get('/api/', (req: Request, res: Response) => {
     res.send('Hello, TypeScript Express!');
 });
 
-app.post('api', (req: Request, res: Response) => {
-  res.send('Hello, TypeScript Express!');
+app.post('/api/justconnected/', checkJwt, (req: any, res: Response) => {
+  var connectMean = req!.auth.payload.sub.split('|')[0];
+  var connectId = req!.auth.payload.sub.split('|')[1];
+  pool.query("INSERT IGNORE INTO users (connectMean, connectId) VALUES (?, ?);", [connectMean, connectId]);
+  res.send({msg : 'Hello, TypeScript Express!'});
 })
 
 app.listen(port, () => {
