@@ -22,6 +22,7 @@
     "@splinetool/loader": "^0.9.508",
     "gsap": "^3.12.5",
     "rxjs": "~7.8.0",
+    "split-type": "^0.3.4",
     "three": "^0.158.0",
     "three-stdlib": "^2.29.4",
     "tslib": "^2.3.0",

@@ -1,6 +1,5 @@
 import { Injectable, WritableSignal, signal } from '@angular/core';
 import { Product } from '../products';
-import { producerNotifyConsumers } from '@angular/core/primitives/signals';
 import { ProductService } from '../product.service';
 
 @Injectable({
@@ -28,20 +27,16 @@ export class CartService {
     }
   }
 
-  addToCart(product: Product) {
-    let count = this.items.get(product.id);
-    if (! count)
-      this.items.set(product.id, 1);
-    else {
-      // max five items of the same product in cart
-      if (count == 5)
-        return;
-      this.items.set(product.id, count+1);
-    }
-
-    this.itemCount.update(value => value + 1);
-    this.totalAmount += product.price;
-
+  addToCart(product: Product, quantity: number = 1) {
+    let count = this.items.get(product.id) || 0;
+    let added = Math.min(count+quantity, 5) - count;
+    this.items.set(product.id, count+added); // max five items of the same product in cart
+    this.itemCount.update(value => value+added);
+    this.totalAmount += product.price * added;
+    if(added>0)
+      alert(numberToName(added)+" "+product.name+" was added to your cart.");  // maybe add a continue shopping and to cart thing
+    else
+      alert("You can't add more than 5 of the same item to your cart.");
     this.updateSessionStorage();
   }
 
@@ -49,7 +44,7 @@ export class CartService {
     let product = this.productService.getProductById(productId);
     let count = this.items.get(productId);
 
-    // FIXME: if count undefined -> delete entry from items?
+    // FIXME: if count undefined -> delete entry from items?  | Mathieu : I think yes, the entry may not have been deleted properly for some reasons, it's more robust
     this.items.delete(productId);
     this.itemCount.update(value => count ? value-count : value);
     this.totalAmount -= count && product?.price ? count * product?.price : 0;
@@ -58,7 +53,7 @@ export class CartService {
   }
 
   setItemQuantity(productId: number, quantity: number|string) {
-    // FIXME: only allow numbers
+    // FIXME: only allow numbers  | Mathieu : you can"t, #itemQuantity is a string but is always a Number string so it's ok
     let quantityNew: number;
     if (typeof quantity == 'string')
       quantityNew = Number(quantity);
@@ -99,11 +94,33 @@ export class CartService {
     return this.totalAmount;
   }
 
+  getProductTotalAmount(productId: number) {
+    let price = this.productService.getProductPrice(productId);
+    let quantity = this.items.get(productId);
+    return  price && quantity ? price * quantity : 0;
+  }
+
+  isEmpty() {
+    return this.itemCount() == 0;
+  }
+
   private updateSessionStorage() {
     sessionStorage.setItem(this.storageKey, JSON.stringify({
       items: JSON.stringify(Array.from(this.items.entries())),
       itemCount: this.itemCount(),
       totalAmount: this.totalAmount
     }));
+  }
+}
+
+
+function numberToName(num: number): string {
+  switch(num) {
+    case 1: return 'One';
+    case 2: return 'Two';
+    case 3: return 'Three';
+    case 4: return 'Four';
+    case 5: return 'Five';
+    default: return 'number out of range';
   }
 }

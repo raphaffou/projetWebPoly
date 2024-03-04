@@ -3,17 +3,16 @@ $gap : 40px;
 
 
 #caroussel{
+    //position: relative;
     display: flex;
     flex-wrap: nowrap;
     height: 100%;
-    width: calc(4*$image-width);
-    overscroll-behavior: none;
-    position: relative;
-    height: 100%;
     width: 100%;
+    //width: calc(4*$image-width);
+    overscroll-behavior: none;
     padding-top: 12vh;
+    padding-bottom: 0;
     cursor: crosshair;
-
     transform: translateX(calc(0.8*$image-width));
 
     .product-showcase{
@@ -24,24 +23,39 @@ $gap : 40px;
             width: 450px;
             object-fit : cover;
             border-radius: 32px;
+
+            @media (max-width: 768px){
+                height: 400px;
+                width: 350px;
+                
+            }
         }
     }
 }
 
-.text{
+.text-wrapper{
+    //position: relative;
+    //top: -400px;
     display :flex;
     justify-content : center;
     align-items: center;
     text-align: center;
-    flex-direction: column;
-    padding-inline: 3em;
     width: 100vw;
-    margin-bottom: 40vh;
-    gap : $gap;
+    padding-bottom: 45vh;
 
-    p{
-        width: 50vw;
-        text-transform: uppercase;
+    .text{
+        display: flex;
+        flex-direction: column;
+        padding: 4em;
+        box-shadow: 0 0 13px 1px #EEE;
+        background-color: white;
+        gap: $gap;
+
+        p{
+            width: 50vw;
+            font-size: larger;
+            font-weight: 400;
+        }
     }
 
     transition: transform 500ms cubic-bezier(0,0,0.5,1),opacity 500ms cubic-bezier(0,0,0.5,1);
@@ -52,14 +66,18 @@ $gap : 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    background-color: #FDF7EC; // OR lighter ?
-
+    gap: 10px;
+    padding-top: 5vh;
+    min-height: 75vh;
+    width: 90%;
+    margin-inline: 5%;
+    background-color: rgba(255,255,255,.6);
+    box-shadow: 0 0 13px 1px #EEE;
+    
     .filters{
         display: flex;
         justify-content: center;
-        //align-self: center;
-        gap: 10px;
+        gap: 30px;
         margin-top: 10px;
         margin-bottom: 20px;
         padding-bottom: 8px;
@@ -68,36 +86,52 @@ $gap : 40px;
 
         .filter{
             display: flex;
-            width: 40vh;
-            margin-inline: 10px;
-            padding: 10px;
-            border-radius: 10px;
+            border-radius: 6px;
             cursor: pointer;
             align-items: center;
+            background-color: #C894AE;
+            color: white;
+            text-align: center;
+            padding: .7em;
 
             label{
                 margin-right: 12px;
             }
 
             select{
-                border: 1px solid #bfbfbf;
-                padding: 8px;
-                border-radius: 8px;
                 appearance: none;
-                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+                
+                background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
                 background-repeat: no-repeat;
                 background-position: right 4px center;
                 background-size: 1em;
-                padding-right: 26px;
 
+                color: white;
+                border: none;
+                font-weight: 400;
+                font-size: 16px;
+                background-color: transparent;
+                padding-right: 24px;
+
+                &:hover{
+                    cursor: pointer;
+                }
 
                 &:focus-visible{
                     outline: none;
                 }
+                
+                // Dpesn't work well 
+                // &:focus{
+                //     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 15 12 9 18 15'%3e%3c/polyline%3e%3c/svg%3e");
+                //     transition: background-image 0.5s ease-in-out;
+                // }
 
                 option{
                     padding: 15px;
                     border-radius: 0;
+                    color: black;
+                    background-color: white;
                 }
             }
 
@@ -105,13 +139,31 @@ $gap : 40px;
     }
 
     .products{
-        width : 90%;
         display : grid;
         gap: calc($gap * 2);
         justify-content: center;
         grid-template-columns: repeat(3,1fr);
         overflow: hidden;
-        //margin-bottom: 50px;
+        margin-bottom: 3.5%;
+
+        @media (max-width: 1216px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    
+        @media (max-width: 768px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+
+        .not-found{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 50vh;
+            font-size: 2em;
+            color: #bfbfbf;
+            user-select: none;
+        }
 
         .product{
             display: flex;
@@ -125,15 +177,45 @@ $gap : 40px;
                 &:hover{
                     cursor: pointer;
                 }
+
+                h3{
+                    padding: 9px;
+                    margin-bottom: 4px;
+
+                    a{
+                        font-weight: 500;
+                    }
+                }
+
+                img{
+                    border-radius: 4px;
+                    height: 310px;
+                    width: 310px;
+                    object-fit: cover;
+                    user-select: none;
+                    pointer-events: none;
+                }
+
             }
 
             .buy{
                 display: flex;
                 align-items: center;
+                flex-direction: column;
                 gap: calc($gap / 2);
 
-                img:hover{
+                button{
+                    padding-block: 13px;
+                    padding-inline: 2.5em;
+                    border: none;
+                    background-color: #C894AE;
+                    color : white;
+                    text-align: center;
+                }
+
+                button:hover{
                     cursor: pointer;
+                    background-color: #c894aed7;
                 }
             }
 

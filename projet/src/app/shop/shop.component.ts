@@ -4,7 +4,9 @@ import { HeaderComponent } from '../header/header.component';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { TextPlugin } from 'gsap/TextPlugin';
+import SplitType from 'split-type';
 import { Router } from '@angular/router';
+import { categories } from '../categories';
 import { products } from '../products';
 import { CartService } from '../cart/cart.service';
 
@@ -19,62 +21,102 @@ export class ShopComponent {
   //https://codepen.io/sunshinetainted/pen/vYeGVNd
   //https://codepen.io/NewbieRuby/pen/rNYejNb
 
+  categories = categories;
   products = products;
+  filteredProducts = products;
+  selectedCategory = categories.All;
+  selectedPrice = 'all';
+
 
   constructor(private router: Router, private cartService: CartService) { }
 
   openPage(product: any) {
     this.router.navigate(['/product-page', product.id]);
+    // const url = this.router.serializeUrl(
+    //   this.router.createUrlTree([`/product-page/${product.id}`])
+    // );
+    // window.open(url, '_blank');
   }
 
   addtoCart(product: any) {
     this.cartService.addToCart(product);
   }
 
+  onCategoryChange(category: string) {
+    this.selectedCategory = categories[category as keyof typeof categories];
+    this.filterProducts();
+  }
+
+  onPriceChange(price: string) {
+    this.selectedPrice = price;
+    this.filterProducts();
+  }
+
+  filterProducts() {
+    this.filteredProducts = this.products.filter(product => {
+      let isCategoryMatch = this.selectedCategory === categories.All || product.categories!.includes(this.selectedCategory);
+      let isPriceMatch = this.selectedPrice === 'all' || this.isPriceInRange(product.price!, this.selectedPrice);
+      return isCategoryMatch && isPriceMatch;
+    });
+  }
+  
+  isPriceInRange(price: number, range: string) {
+    let [min, max] = range.split('-').map(Number);
+    return price >= min && price <= max;
+  }
+
 
   ngOnInit() {
     gsap.registerPlugin(ScrollTrigger);
 
+    let pinSpacerElement = document.querySelector('.pin-spacer');
+    console.debug(pinSpacerElement);
+
     let products:any[] = gsap.utils.toArray(".product");
-    let image_width:any = gsap.getProperty("#caroussel", "width", "px");
+    let images_width:any = gsap.getProperty("#caroussel", "width", "px");
+    let scroller_width:any = gsap.getProperty("body", "width");
+    let scroller_height:any = gsap.getProperty("body", "height");
     let header_height:any = gsap.getProperty("#header", 'height');
 
     gsap.to("#caroussel", {
-      xPercent: -120,
-      x: image_width*(products.length-1)/products.length,
+      xPercent: -145*scroller_height/scroller_width,
+      x : 0,
       ease: "none",
       scrollTrigger: {
         trigger: "#caroussel",
         start: () => `top-=${header_height} top`,
-        end: () =>  image_width*(products.length-1)/products.length - 3*header_height,
+        end: () =>  2*images_width/3,
         scrub: 1,
         pin: true,
-        snap: image_width / (products.length - 1),
+        snap: images_width / (products.length-1),
         invalidateOnRefresh: true,
-        anticipatePin: 0,
-        markers : true
+        anticipatePin: 1,
       }
     });
 
 
-    const text_sections = gsap.utils.toArray('.text');
+    const textSections = gsap.utils.toArray('.text');
 
-    text_sections.forEach((section:any) => {
-      gsap.set(section, { y: 30, opacity: 0});
+    // https://gsap-text-animator.webflow.io/
+    textSections.forEach((section:any) => {
+      let typeSplit = new SplitType(section, {
+        types: 'lines,words,chars',
+        tagName: 'span'
+      });
 
-      ScrollTrigger.create({
-        trigger: section,
-        start: () => "top center",  //`top+=${gsap.getProperty(section, 'y')}/4 bottom-=100`, //${gsap.getProperty(section, 'y')}/4
-        end: () => "bottom center", //`+=${section.clientHeight}`,
-        onEnter: () => {
-          gsap.to(section, {y: 0, opacity: 1});
-        },
-        onLeaveBack: () => {
-          gsap.to(section, {y: 50, opacity: 0});
-        },
-        markers: true,
-        invalidateOnRefresh: true
-      })});
-
+      gsap.from(typeSplit.chars, {
+        opacity: 0.3,
+        duration: 0.1,
+        ease: 'power1.out',
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: section,
+          start: 'top center',
+          end: 'bottom center',
+          scrub: true,
+        }
+      });
+    });
   }
+  
 }

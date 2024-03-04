@@ -13,6 +13,7 @@ npm version : 10.1.0
 `npm install three`  
 `npm i --save-dev @types/three`  
 `npm install three-stdlib`  
+`npm i split-type`  
 
 - Backend : 
       - `npm install express typescript ts-node @types/node @types/express --save-dev`
@@ -20,13 +21,16 @@ npm version : 10.1.0
 
 
 Front TODO :
-- [ ] Story Page
-- [ ] Login Page
-- [ ] Animation plays once at load ???
-- [ ] Make the filters work in shop
-- [ ] Reduce LOAD DELAY !
-- [ ] Beautify
-- [ ] Mobile version (<img ngSrc="cat.jpg" width="400" height="200" sizes="(max-width: 768px) 100vw, 50vw">)
+<!-- - [ ] Reduce LOAD DELAY ! -->
+- [x] More products
+Out of scope : Mobile version (<img ngSrc="cat.jpg" width="400" height="200" sizes="(max-width: 768px) 100vw, 50vw">)
+- [x] Better product images
+- [x] Make the filters work in shop
+- [x] Animation plays once at load ???
+- [x] Beautify
+- [x] Story Page (Reproduction de https://stage-helias.myshopify.com/pages/about)
+- [x] Beautify Product page
+- [x] Add UX for Cart + make multiple quantity work on product page
 - [x] Shop pages perf 
 - [x] Font work
 - [x] Cart Page
@@ -100,6 +104,7 @@ Front TODO :
 - ![](https://assets.awwwards.com/awards/submissions/2019/07/5d2378f31ffb2988004784.png)
 - ![](https://assets.awwwards.com/awards/external/2020/12/5fcf897cd3999409543069.jpg)
 - ![](https://assets.awwwards.com/awards/submissions/2018/03/5aa791c5a56ba.jpg)
+- <https://haikei.app>
 
 
 ### Make ThreeJS Work
