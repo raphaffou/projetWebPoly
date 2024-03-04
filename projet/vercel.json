@@ -4,8 +4,8 @@
     ],
     "redirects": [
         {
-          "source": "/api/:test",
-          "destination": "/api/src/index/:test"
+          "source": "/api/:testvercelsvpmefrappezpas",
+          "destination": "/api/src/index/:testvercelsvpmefrappezpas"
         }
       ]
   }
