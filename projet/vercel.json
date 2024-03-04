@@ -1,8 +1,8 @@
 {
     "routes": [
         {
-          "source": "/api/:test",
-          "destination": "/api/src/index/:test"
+          "src": "/api/:test",
+          "dest": "/api/src/index/:test"
         }
       ]
   }
