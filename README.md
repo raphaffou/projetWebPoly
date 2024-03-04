@@ -16,8 +16,7 @@ npm version : 10.1.0
 `npm i split-type`  
 
 - Backend : 
-      - `npm install express typescript ts-node @types/node @types/express --save-dev`
-      - `npm install mariadb`
+      - `cd projet/api ; npm i`
 
 
 Front TODO :
