@@ -5,7 +5,6 @@ import { routes } from './app.routes';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
 import { environment as env } from '../../environments/environment';
-import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 
 export const appConfig: ApplicationConfig = {
   providers: [
