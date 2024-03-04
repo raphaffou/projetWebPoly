@@ -1,5 +1,5 @@
 {
-    "redirects": [
+    "routes": [
         {
           "source": "/api/:test",
           "destination": "/api/src/index/:test"
