@@ -1,0 +1,10 @@
+{
+  "domain": "dev-wpfm2407tsgsc0cm.eu.auth0.com",
+  "clientId": "67KQ4PKHb7fNyPhQCqDPW9o8MnXR7TLK",
+  "authorizationParams": {
+    "audience": "https://dev-wpfm2407tsgsc0cm.eu.auth0.com/api/v2/"
+  },
+  "apiUri": "http://localhost:4200/api",
+  "appUri": "http://localhost:4200",
+  "errorPath": "/error"
+}
