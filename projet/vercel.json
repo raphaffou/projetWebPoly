@@ -1,5 +1,11 @@
 {
     "routes": [
-      { "src": "/api/(?<command>[^/]+)", "dest": "/api/src/index/$command" }
-    ]
+      { "src": "/api/", "dest": "/api/src/index" }
+    ],
+    "redirects": [
+        {
+          "source": "/api/:command",
+          "destination": "/api/src/index/:command"
+        }
+      ]
   }
