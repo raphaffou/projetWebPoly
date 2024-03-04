@@ -1,11 +1,8 @@
 {
-    "routes": [
-      { "src": "/api/", "dest": "/api/src/index" }
-    ],
     "redirects": [
         {
-          "source": "/api/:testvercelsvpmefrappezpas",
-          "destination": "/api/src/index/:testvercelsvpmefrappezpas"
+          "source": "/api/:test",
+          "destination": "/api/src/index/:test"
         }
       ]
   }
