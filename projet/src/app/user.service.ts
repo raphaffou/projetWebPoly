@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
+import { CartService } from './cart/cart.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(public auth: AuthService, private http: HttpClient) { }
+  constructor(public auth: AuthService, private http: HttpClient, private cartService: CartService) { }
 
   handleLogin(): void {
     this.auth.loginWithPopup().subscribe((user) => {
@@ -22,6 +23,7 @@ export class UserService {
     this.auth.loginWithPopup();
   }
   handleLogout(): void {
+    this.cartService.clearCart();
     this.auth.logout({
       logoutParams: {
         returnTo: window.location.origin,
