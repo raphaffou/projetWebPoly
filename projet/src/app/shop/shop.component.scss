@@ -146,11 +146,11 @@ $gap : 40px;
         overflow: hidden;
         margin-bottom: 3.5%;
 
-        @media (max-width: 1216px) {
+        @media (max-width: 1305px) {
             grid-template-columns: repeat(2, 1fr);
         }
     
-        @media (max-width: 768px) {
+        @media (max-width: 866px) {
             grid-template-columns: repeat(1, 1fr);
         }
 
