@@ -7,8 +7,9 @@ import { TextPlugin } from 'gsap/TextPlugin';
 import SplitType from 'split-type';
 import { Router } from '@angular/router';
 import { categories } from '../categories';
-import { products } from '../products';
 import { CartService } from '../cart/cart.service';
+import { ProductService } from '../product.service';
+import { Product } from '../products';
 
 @Component({
   selector: 'shop',
@@ -22,13 +23,14 @@ export class ShopComponent {
   //https://codepen.io/NewbieRuby/pen/rNYejNb
 
   categories = categories;
-  products = products;
-  filteredProducts = products;
+  products: Product[] = [];
+  filteredProducts: Product[] = [];
   selectedCategory = categories.All;
   selectedPrice = 'all';
 
 
-  constructor(private router: Router, private cartService: CartService) { }
+  constructor(private router: Router, private cartService: CartService, private productService: ProductService) {
+  }
 
   openPage(product: any) {
     this.router.navigate(['/product-page', product.id]);
@@ -67,6 +69,12 @@ export class ShopComponent {
 
 
   ngOnInit() {
+    this.productService.getProducts().subscribe(products => {
+      this.products = products;
+      this.filteredProducts = products;
+    });
+
+
     gsap.registerPlugin(ScrollTrigger);
 
     let pinSpacerElement = document.querySelector('.pin-spacer');

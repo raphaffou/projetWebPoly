@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Product, products } from './products';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,7 @@ import { Product, products } from './products';
 export class ProductService {
   products = products;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   // TODO: add Product class
   getProductById(productId: number): Product|null {
@@ -32,5 +33,9 @@ export class ProductService {
 
   getProductImagePath(productId: number) {
     return this.getProductById(productId)?.image;
+  }
+
+  getProducts() {
+    return this.http.get<Product[]>(window.location.origin+'/api/products/');
   }
 }

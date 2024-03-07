@@ -25,7 +25,7 @@ export const environment = {
     errorPath,
   },
   httpInterceptor: {
-    allowedList: [`${apiUri}/*`],
+    allowedList: [`http://localhost:4200/api/justconnected/`],
   },
 };
 

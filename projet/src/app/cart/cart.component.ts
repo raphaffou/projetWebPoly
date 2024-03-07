@@ -6,6 +6,7 @@ import { CartService } from './cart.service';
 import { ProductService } from '../product.service';
 import { ChevronDownComponent } from '../../assets/chevron-down/chevron-down.component';
 import { RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'cart',
@@ -16,7 +17,12 @@ import { RouterLink } from '@angular/router';
 })
 export class CartComponent {
 
-  constructor(private router : Router, public cartService: CartService, public productService: ProductService) {}
+  constructor(
+    private router : Router,
+    public cartService: CartService,
+    public productService: ProductService,
+    private http: HttpClient
+  ) {}
 
   getItems() {
     return this.cartService.getItems();

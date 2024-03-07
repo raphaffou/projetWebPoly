@@ -79,4 +79,7 @@ app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
 
-
+app.get('/api/products/', async (req: Request, res: Response) => {
+  let products = await pool.query("SELECT * FROM products;");
+  res.json(products);
+});
