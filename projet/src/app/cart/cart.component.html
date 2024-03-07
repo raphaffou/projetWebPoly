@@ -51,15 +51,18 @@
       <div class="title-1">Order</div>
       <div id="subtotal" class="order-details">
         <span class="title">Subtotal</span>
-        <span>{{ cartService.getTotalAmount() | currency: 'EUR' : 'symbol' : '0.2-2' : 'fr' }}</span>
+        <span>{{ cartService.getTotalAmount().toFixed(2) | currency: 'EUR' : 'symbol' : '0.2-2' : 'fr' }}</span>
       </div>
       <div id="shipping" class="order-details">
         <span class="title">Shipping</span>
-        <span>4.99 €</span>
+        <span>{{ shippingCost | currency: 'EUR' : 'symbol' : '0.2-2' : 'fr' }} </span>
       </div>
       <div id="total" class="order-details">
         <span class="title">Total</span>
-        <span>...</span>
+        <span>{{ (cartService.getTotalAmount() + shippingCost).toFixed(2) | currency: 'EUR' : 'symbol' : '0.2-2' : 'fr' }}</span>
+      </div>
+      <div id="button-wrapper">
+        <button id="checkout">Checkout</button>
       </div>
     </div>
 

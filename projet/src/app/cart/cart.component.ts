@@ -16,6 +16,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrl: './cart.component.scss'
 })
 export class CartComponent {
+  shippingCost: number = 4.99;
 
   constructor(
     private router : Router,

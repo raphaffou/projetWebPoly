@@ -1,7 +1,9 @@
+$container-color: #fffdf8e2;
+
 #cart{
     // FIXME: padding on smaller screens
     margin-top: 65px;
-    padding: 32px 256px;
+    padding: 5vh 25vh;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -9,11 +11,11 @@
 
 .container{
     padding: 32px;
-    background-color: #fffdf8e2;
+    background-color: $container-color;
 }
 
 #cart-items{
-    width: 50%;
+    width: 75vh;
 }
 
 #order{
@@ -170,4 +172,26 @@ p{
 #empty-cart-text{
     margin-top: 48px;
     text-align: center;
+}
+
+#checkout{
+    color:cornsilk;
+    background-color: black;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: 700;
+    border: 2px;
+    margin-top: 24px;
+    right: 0;
+}
+
+#button-wrapper{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+:hover#checkout{
+    background-color: $container-color;
+    color: black;
+    transition: 0.5s;
 }
