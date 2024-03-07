@@ -61,6 +61,9 @@
         <span class="title">Total</span>
         <span>{{ (cartService.getTotalAmount() + shippingCost).toFixed(2) | currency: 'EUR' : 'symbol' : '0.2-2' : 'fr' }}</span>
       </div>
+      <div id="button-wrapper">
+        <button id="checkout">Checkout</button>
+      </div>
     </div>
 
   </div>
